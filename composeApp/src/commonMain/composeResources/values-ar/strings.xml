@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">محمود ابراهيم</string>
+    
+    <!-- Navigation -->
+    <string name="nav_about">عني</string>
+    <string name="nav_experience">الخبرات</string>
+    <string name="nav_skills">المهارات</string>
+    <string name="nav_projects">المشاريع</string>
+    <string name="nav_education">التعليم</string>
+    
+    <!-- Section Titles -->
+    <string name="section_skills">المهارات</string>
+    <string name="section_experience">الخبرات</string>
+    <string name="section_education">التعليم</string>
+    <string name="section_certificates">الشهادات</string>
+    <string name="section_projects">المشاريع</string>
+    
+    <!-- Settings -->
+    <string name="settings">الاعدادات</string>
+    <string name="theme">المظهر</string>
+    <string name="language">اللغة</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="switch_to_light_mode">التبديل للوضع الفاتح</string>
+    <string name="switch_to_dark_mode">التبديل للوضع الداكن</string>
+    
+    <!-- Profile -->
+    <string name="profile_picture">صورة الملف الشخصي</string>
+    <string name="years_experience">%d+ سنوات خبرة</string>
+    <string name="download_cv">تحميل السيرة الذاتية</string>
+    
+    <!-- Job Types -->
+    <string name="job_full_time">دوام كامل</string>
+    <string name="job_part_time">دوام جزئي</string>
+    <string name="job_intern">متدرب</string>
+    <string name="job_contract">عقد</string>
+    <string name="job_freelance">عمل حر</string>
+    
+    <!-- Project Platforms -->
+    <string name="platform_play_store">متجر بلاي</string>
+    <string name="platform_github">جيت هب</string>
+    <string name="platform_internal">داخلي</string>
+    <string name="featured">مميز</string>
+    <string name="internal_project">مشروع داخلي</string>
+    
+    <!-- Education -->
+    <string name="gpa_label">المعدل التراكمي: %s</string>
+    <string name="grade_label">التقدير: %s</string>
+    
+    <!-- Social Links -->
+    <string name="linkedin">لينكد إن</string>
+    <string name="github">جيت هب</string>
+    <string name="email">البريد الإلكتروني</string>
+    
+    <!-- CV Data - Profile -->
+    <string name="profile_first_name">محمود</string>
+    <string name="profile_last_name">ابراهيم</string>
+    <string name="profile_title">مهندس اندرويد أول</string>
+    <string name="profile_location">القاهرة، مصر</string>
+    <string name="profile_bio">مهندس برمجيات بخبرة تزيد عن %d سنوات في تطوير وتصميم وصيانة تطبيقات الاندرويد. متمكن من قيادة مشاريع تطوير الهاتف المحمول والتعاون مع فرق متعددة التخصصات وتقديم تطبيقات عالية الأداء وقابلة للتوسع. شغوف بالاستفادة من الأدوات والمنهجيات الحديثة لتحسين أداء التطبيقات وتجربة المستخدم.</string>
+    
+    <!-- Languages -->
+    <string name="lang_arabic">العربية</string>
+    <string name="lang_english">الانجليزية</string>
+    <string name="level_native">اللغة الأم</string>
+    <string name="level_professional">مستوى احترافي</string>
+    
+    <!-- Experience 1 - WeightWatchers -->
+    <string name="exp1_title">مهندس اندرويد أول</string>
+    <string name="exp1_company">WeightWatchers</string>
+    <string name="exp1_location">عن بعد - نيويورك، الولايات المتحدة</string>
+    <string name="exp1_start">08/2025</string>
+    <string name="exp1_end">حتى الآن</string>
+    <string name="exp1_resp1">بناء وصيانة تطبيق WeightWatchers الرسمي للاندرويد المستخدم من قبل الملايين حول العالم.</string>
+    <string name="exp1_resp2">تطوير ميزات جديدة وواجهات مستخدم باستخدام Kotlin و Jetpack Compose وهندسة اندرويد الحديثة.</string>
+    <string name="exp1_resp3">التعاون مع فرق المنتج والتصميم والـ Backend لبناء تجارب تتبع قابلة للتوسع.</string>
+    <string name="exp1_resp4">تعزيز الموثوقية وجودة الكود عبر Clean Architecture و MVI/MVVM والاختبار والمراقبة.</string>
+    
+    <!-- Experience 2 - iSpace -->
+    <string name="exp2_title">مهندس اندرويد أول</string>
+    <string name="exp2_company">iSpace Technology</string>
+    <string name="exp2_location">عن بعد - دبي، الإمارات</string>
+    <string name="exp2_start">06/2025</string>
+    <string name="exp2_end">12/2025</string>
+    <string name="exp2_resp1">تصميم وتطوير تطبيق SGS Super App مع دمج ميزات المحادثة الذكية عبر Labiba SDK.</string>
+    <string name="exp2_resp2">قيادة تطوير الميزات وتحسين الأداء عبر عدة تطبيقات اندرويد.</string>
+    <string name="exp2_resp3">استخدام هندسة Multi-Module و Kotlin Flow و Retrofit للتعاون السلس عن بعد.</string>
+    <string name="exp2_resp4">تطبيق Clean Architecture مع أنماط MVVM/MVI لتقليل تكرار الأخطاء.</string>
+    
+    <!-- Experience 3 - Telecom Egypt -->
+    <string name="exp3_title">مهندس اندرويد أول</string>
+    <string name="exp3_company">Telecom Egypt (WE)</string>
+    <string name="exp3_location">القرية الذكية، مصر</string>
+    <string name="exp3_start">01/2023</string>
+    <string name="exp3_end">12/2025</string>
+    <string name="exp3_resp1">قيادة تطوير التطبيقات الجديدة ودعم التطبيقات الموجودة.</string>
+    <string name="exp3_resp2">التعاون مع فرق متعددة التخصصات لضمان تسليم المشاريع في الوقت المحدد.</string>
+    <string name="exp3_resp3">بناء تطبيقات باستخدام Clean Architecture و Kotlin Coroutines و Flow و Compose.</string>
+    <string name="exp3_resp4">التحسين المستمر للمهارات في Git و Jira وأدوات التطوير الأخرى.</string>
+    <string name="exp3_resp5">توجيه المطورين المبتدئين وتقديم الإرشاد التقني.</string>
+    
+    <!-- Experience 4 - Spirit -->
+    <string name="exp4_title">مهندس اندرويد</string>
+    <string name="exp4_company">Spirit for Consultancy Services</string>
+    <string name="exp4_location">مدينة نصر، القاهرة، مصر</string>
+    <string name="exp4_start">12/2021</string>
+    <string name="exp4_end">01/2023</string>
+    <string name="exp4_resp1">تطوير تطبيقات الهاتف المحمول للعملاء.</string>
+    <string name="exp4_resp2">المسؤولية عن إجراء التعديلات على تطبيق Smart Sales.</string>
+    <string name="exp4_resp3">التعاون مع مالكي المنتجات لتحديد المتطلبات وتقديم الحلول.</string>
+    <string name="exp4_resp4">دمج تطبيقات الهاتف المحمول مع أنظمة SAP وبناء خدمات ويب باستخدام C# WCF.</string>
+    
+    <!-- Experience 5 - TE Data -->
+    <string name="exp5_title">متدرب مطور اندرويد</string>
+    <string name="exp5_company">TE Data</string>
+    <string name="exp5_location">القرية الذكية، مصر</string>
+    <string name="exp5_start">06/2018</string>
+    <string name="exp5_end">08/2018</string>
+    <string name="exp5_resp1">تطوير تطبيق WE Home (My WE) باستخدام Java و Android SDK و Retrofit2 و Material Design.</string>
+    <string name="exp5_resp2">إعادة بناء تطبيق 3AL-MASHY باستخدام Java و SQLite و list view و Google Maps.</string>
+    <string name="exp5_resp3">القدرة على العمل مع REST APIs وخدمات Google (Google Maps و Firebase).</string>
+    <string name="exp5_resp4">بناء 3 تطبيقات اندرويد خلال فترة التدريب.</string>
+    
+    <!-- Skill Categories -->
+    <string name="skill_cat_languages">اللغات والأطر البرمجية</string>
+    <string name="skill_cat_architecture">الهندسة المعمارية والأنماط</string>
+    <string name="skill_cat_tools">الأدوات والمكتبات</string>
+    <string name="skill_cat_devops">DevOps والاختبار</string>
+    <string name="skill_cat_cloud">السحابة والتكاملات</string>
+    <string name="skill_cat_soft">المهارات الشخصية</string>
+    
+    <!-- Projects -->
+    <string name="proj1_name">WeightWatchers</string>
+    <string name="proj1_desc">التطبيق الرسمي لبرنامج WeightWatchers لإنقاص الوزن، مع أكثر من 10 مليون تحميل وتقييم 4.5 نجمة على Google Play، يساعد الأعضاء على تتبع الطعام والنشاط والماء والوزن.</string>
+    
+    <string name="proj2_name">SGS Super App</string>
+    <string name="proj2_desc">تطوير تطبيق متكامل معزز بالذكاء الاصطناعي لخدمات الأرض السعودية مع ميزات المحادثة.</string>
+    
+    <string name="proj3_name">Mystery Shopper</string>
+    <string name="proj3_desc">تطبيق اندرويد مخصص لبرنامج المتسوق الخفي في المصرية للاتصالات، يمكّن الوكلاء من زيارة فروع WE بشكل سري وإجراء تقييمات منظمة.</string>
+    
+    <string name="proj4_name">Data Cleansing</string>
+    <string name="proj4_desc">تطبيق اندرويد متخصص لفنيي المصرية للاتصالات الميدانيين لتبسيط مسح وتوثيق خزائن وصناديق الشبكة.</string>
+    
+    <string name="proj5_name">WE Attend</string>
+    <string name="proj5_desc">تطبيق لتبسيط عمليات إدارة الموارد البشرية مع تتبع وإدارة الحضور لموظفي المصرية للاتصالات.</string>
+    
+    <string name="proj6_name">WE HR</string>
+    <string name="proj6_desc">يتيح لموظفي TE إدارة خدماتهم بسهولة من خلال الوصول إليها من أجهزتهم.</string>
+    
+    <string name="proj7_name">My WE</string>
+    <string name="proj7_desc">تطبيق إدارة الإنترنت المحمول مع المعاملات عبر الإنترنت - مدفوعات آمنة وعالية النطاق.</string>
+    
+    <string name="proj8_name">Movie Catalog</string>
+    <string name="proj8_desc">تطبيق الوسائط الرائجة مع تجربة تصفح حديثة مستوحاة من TikTok.</string>
+    
+    <string name="proj9_name">News Shorts</string>
+    <string name="proj9_desc">تطبيق أخبار مع تجربة تصفح حديثة لاستهلاك الأخبار السريع.</string>
+    
+    <!-- Education -->
+    <string name="edu_degree">بكالوريوس علوم الحاسب</string>
+    <string name="edu_university">جامعة مصر للعلوم والتكنولوجيا</string>
+    <string name="edu_location">مدينة السادس من أكتوبر، مصر</string>
+    <string name="edu_gpa">3.47 / 4.0</string>
+    <string name="edu_grade">جيد جداً</string>
+    
+    <!-- Certificates -->
+    <string name="cert1">Master Swift</string>
+    <string name="cert2">iOS 15 and Swift 5</string>
+    <string name="cert3">Advanced Android Kotlin Development Nanodegree</string>
+    <string name="cert4">Introduction to Software Testing Concepts and Techniques</string>
+    <string name="cert5">Kotlin Programming Language</string>
+    <string name="cert6">SQL for Statistics Essential Training</string>
+    <string name="cert7">Introduction to Graphic Design: XD</string>
+    <string name="cert8">Android Bootcamp with Kotlin</string>
+</resources>
+

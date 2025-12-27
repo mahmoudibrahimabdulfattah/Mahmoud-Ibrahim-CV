@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle - Teal -->
+  <circle cx="100" cy="100" r="100" fill="#0F766E"/>
+  <!-- M Letter - White -->
+  <path fill="#FFFFFF" d="M63 70 L63 130 L74 130 L74 90 L89 115 L100 115 L115 90 L115 130 L126 130 L126 70 L115 70 L94.5 105 L74 70 Z"/>
+  <!-- Accent Dot - Amber -->
+  <circle cx="137" cy="122" r="8" fill="#F59E0B"/>
+</svg>
+

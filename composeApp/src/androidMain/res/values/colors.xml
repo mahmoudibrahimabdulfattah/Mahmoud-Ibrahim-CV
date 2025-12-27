@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors (Teal) -->
+    <color name="primary">#FF0F766E</color>
+    <color name="primary_dark">#FF0D5A54</color>
+    <color name="primary_light">#FF14B8A6</color>
+    
+    <!-- Accent Colors (Amber) -->
+    <color name="accent">#FFF59E0B</color>
+    <color name="accent_light">#FFFBBF24</color>
+    
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#FF0F172A</color>
+    <color name="dark_surface">#FF1E293B</color>
+    <color name="dark_text_primary">#FFF1F5F9</color>
+    <color name="dark_text_secondary">#FF94A3B8</color>
+    
+    <!-- Light Theme Colors -->
+    <color name="light_background">#FFF8FAFC</color>
+    <color name="light_surface">#FFFFFFFF</color>
+    <color name="light_text_primary">#FF0F172A</color>
+    <color name="light_text_secondary">#FF475569</color>
+    
+    <!-- Legacy colors for themes.xml -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
+
