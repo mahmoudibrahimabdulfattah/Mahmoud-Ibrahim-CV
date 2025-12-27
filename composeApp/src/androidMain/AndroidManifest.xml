@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MahmoudIbrahimCV">
+        
         <activity
             android:exported="true"
             android:name=".MainActivity"
@@ -19,6 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- App Startup - Deferred Coil initialization -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.mif.mahmoudcv.CoilInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <!-- Enable ProfileInstaller for faster subsequent launches -->
+        <profileable
+            android:shell="true"
+            tools:targetApi="29" />
+        
     </application>
 
 </manifest>

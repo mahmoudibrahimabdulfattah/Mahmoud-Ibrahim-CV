@@ -43,3 +43,4 @@ val Error: Color = Color(0xFFEF4444)
 val Warning: Color = Color(0xFFF59E0B)
 val Info: Color = Color(0xFF3B82F6)
 
+

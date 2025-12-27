@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
+    // Note: Removed composeHotReload - adds startup overhead, use only during active development
 }
 
 kotlin {
@@ -45,6 +45,8 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.splashscreen)
+            implementation(libs.androidx.profileinstaller)
+            implementation(libs.androidx.startup)
             implementation(libs.ktor.client.android)
         }
         commonMain.dependencies {
@@ -100,15 +102,33 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+        // Embed dex files for faster class loading
+        dex {
+            useLegacyPackaging = false
+        }
     }
     buildTypes {
+        getByName("debug") {
+            // Keep debug fast but add some optimizations
+            isDebuggable = true
+        }
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    // Enable build features for better performance
+    buildFeatures {
+        buildConfig = false
+        resValues = false
     }
 }
 

@@ -2,7 +2,10 @@ package com.mif.mahmoudcv
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import com.mif.mahmoudcv.data.AppLanguage
 import com.mif.mahmoudcv.data.LocalSettingsManager
@@ -15,18 +18,21 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
     val settingsManager: SettingsManager = remember { SettingsManager.getInstance() }
-    val isDarkTheme: Boolean = settingsManager.isDarkTheme
-    val currentLanguage: AppLanguage = settingsManager.currentLanguage
-    val layoutDirection: LayoutDirection = if (currentLanguage == AppLanguage.ARABIC) {
-        LayoutDirection.Rtl
-    } else {
-        LayoutDirection.Ltr
+    // Use derivedStateOf to avoid unnecessary recompositions
+    val layoutDirection: LayoutDirection by remember {
+        derivedStateOf {
+            if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+                LayoutDirection.Rtl
+            } else {
+                LayoutDirection.Ltr
+            }
+        }
     }
     CompositionLocalProvider(
         LocalSettingsManager provides settingsManager,
-        androidx.compose.ui.platform.LocalLayoutDirection provides layoutDirection
+        LocalLayoutDirection provides layoutDirection
     ) {
-        MahmoudIbrahimTheme(darkTheme = isDarkTheme) {
+        MahmoudIbrahimTheme(darkTheme = settingsManager.isDarkTheme) {
             MainScreen()
         }
     }

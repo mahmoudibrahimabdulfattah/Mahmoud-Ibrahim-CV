@@ -12,8 +12,12 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Install splash screen first - must be before super.onCreate()
+        val splashScreen = installSplashScreen()
+        super.onCreate(savedInstanceState)
+        // Initialize context provider after super.onCreate()
         ContextProvider.initialize(this)
-        installSplashScreen()
+        // Enable edge to edge display
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.auto(
                 lightScrim = Color.TRANSPARENT,
@@ -24,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 darkScrim = Color.TRANSPARENT
             )
         )
-        super.onCreate(savedInstanceState)
+        // Set content immediately without any delay
         setContent {
             App()
         }

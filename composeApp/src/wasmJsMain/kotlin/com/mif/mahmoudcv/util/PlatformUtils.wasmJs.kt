@@ -15,3 +15,4 @@ actual fun openEmailClient(email: String) {
     window.open("mailto:$email", "_self")
 }
 
+
