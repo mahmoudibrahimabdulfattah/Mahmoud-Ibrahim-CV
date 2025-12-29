@@ -77,12 +77,30 @@ object CvDataProvider {
             Experience(
                 id = 1,
                 title = Strings.exp1Title(),
+                company = "Telecom Egypt (WE)",
+                companyUrl = TELECOM_EGYPT_URL,
+                location = Strings.exp3Location(),
+                jobType = JobType.FULL_TIME,
+                startDate = "01/2023",
+                endDate = Strings.exp3End(),
+                responsibilities = listOf(
+                    Strings.exp3Resp1(),
+                    Strings.exp3Resp2(),
+                    Strings.exp3Resp3(),
+                    Strings.exp3Resp4(),
+                    Strings.exp3Resp5()
+                ),
+                technologies = listOf("Kotlin", "Coroutines", "Flow", "Compose", "Firebase")
+            ),
+            Experience(
+                id = 2,
+                title = Strings.exp1Title(),
                 company = "WeightWatchers",
                 companyUrl = WEIGHTWATCHERS_URL,
                 location = Strings.exp1Location(),
                 jobType = JobType.FULL_TIME,
                 startDate = "08/2025",
-                endDate = Strings.exp1End(),
+                endDate = "12/2025",
                 responsibilities = listOf(
                     Strings.exp1Resp1(),
                     Strings.exp1Resp2(),
@@ -92,7 +110,7 @@ object CvDataProvider {
                 technologies = listOf("Kotlin", "Jetpack Compose", "Clean Architecture", "MVI/MVVM", "Testing")
             ),
             Experience(
-                id = 2,
+                id = 3,
                 title = Strings.exp1Title(),
                 company = "iSpace Technology",
                 companyUrl = ISPACE_URL,
@@ -107,24 +125,6 @@ object CvDataProvider {
                     Strings.exp2Resp4()
                 ),
                 technologies = listOf("Kotlin", "Jetpack Compose", "Clean Architecture", "MVVM/MVI", "AI/ML")
-            ),
-            Experience(
-                id = 3,
-                title = Strings.exp1Title(),
-                company = "Telecom Egypt (WE)",
-                companyUrl = TELECOM_EGYPT_URL,
-                location = Strings.exp3Location(),
-                jobType = JobType.FULL_TIME,
-                startDate = "01/2023",
-                endDate = "12/2025",
-                responsibilities = listOf(
-                    Strings.exp3Resp1(),
-                    Strings.exp3Resp2(),
-                    Strings.exp3Resp3(),
-                    Strings.exp3Resp4(),
-                    Strings.exp3Resp5()
-                ),
-                technologies = listOf("Kotlin", "Coroutines", "Flow", "Compose", "Firebase")
             ),
             Experience(
                 id = 4,

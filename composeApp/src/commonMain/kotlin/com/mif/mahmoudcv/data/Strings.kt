@@ -99,8 +99,7 @@ object Strings {
 
     @Composable
     fun exp1End(): String {
-        val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "حتى الآن" else "Present"
+        return "12/2025"
     }
 
     @Composable
@@ -193,6 +192,12 @@ object Strings {
     fun exp3Location(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "القرية الذكية، مصر" else "Smart Village, Egypt"
+    }
+
+    @Composable
+    fun exp3End(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "حتى الآن" else "Present"
     }
 
     @Composable

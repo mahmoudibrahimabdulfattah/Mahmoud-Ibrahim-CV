@@ -71,7 +71,7 @@
     <string name="exp1_company">WeightWatchers</string>
     <string name="exp1_location">Remote - New York, United States</string>
     <string name="exp1_start">08/2025</string>
-    <string name="exp1_end">Present</string>
+    <string name="exp1_end">12/2025</string>
     <string name="exp1_resp1">Building and maintaining the official WeightWatchers Android app used by millions worldwide.</string>
     <string name="exp1_resp2">Shipping new features and UI with Kotlin, Jetpack Compose, and modern Android architecture.</string>
     <string name="exp1_resp3">Collaborating with product, design, and backend teams on scalable tracking experiences.</string>
@@ -93,7 +93,7 @@
     <string name="exp3_company">Telecom Egypt (WE)</string>
     <string name="exp3_location">Smart Village, Egypt</string>
     <string name="exp3_start">01/2023</string>
-    <string name="exp3_end">12/2025</string>
+    <string name="exp3_end">Present</string>
     <string name="exp3_resp1">Led the development of new applications and supported existing ones.</string>
     <string name="exp3_resp2">Collaborated with cross-functional teams to ensure timely project delivery.</string>
     <string name="exp3_resp3">Build apps where I applied Clean Architecture, Kotlin Coroutines, Flow, and Compose.</string>
