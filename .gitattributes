@@ -1,0 +1,50 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Kotlin files
+*.kt text eol=lf
+*.kts text eol=lf
+
+# Java files
+*.java text eol=lf
+
+# XML files
+*.xml text eol=lf
+
+# Properties files
+*.properties text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Swift files
+*.swift text eol=lf
+
+# Storyboard files
+*.storyboard text eol=lf
+
+# Markdown
+*.md text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Batch files (Windows)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.jar binary
+*.so binary
+*.dylib binary
+
+# Gradle wrapper
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+

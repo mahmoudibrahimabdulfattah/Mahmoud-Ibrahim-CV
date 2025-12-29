@@ -116,7 +116,7 @@ object CvDataProvider {
                 companyUrl = ISPACE_URL,
                 location = Strings.exp2Location(),
                 jobType = JobType.PART_TIME,
-                startDate = "06/2025",
+                startDate = "08/2025",
                 endDate = "12/2025",
                 responsibilities = listOf(
                     Strings.exp2Resp1(),
