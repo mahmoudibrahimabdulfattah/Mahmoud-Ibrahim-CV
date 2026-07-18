@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mahmoud Ibrahim</string>
+    <string name="app_name">Mahmoud Khalil</string>
     
     <!-- Navigation -->
     <string name="nav_about">About</string>
@@ -55,8 +55,8 @@
     
     <!-- CV Data - Profile -->
     <string name="profile_first_name">Mahmoud</string>
-    <string name="profile_last_name">Ibrahim</string>
-    <string name="profile_title">Sr. Android Engineer</string>
+    <string name="profile_last_name">I. Khalil</string>
+    <string name="profile_title">Senior Mobile Engineer — Android &amp; iOS</string>
     <string name="profile_location">Cairo, Egypt</string>
     <string name="profile_bio">Software Engineer with %d+ years of experience developing, designing, and maintaining Android applications. Skilled in leading mobile development projects, collaborating with cross-functional teams, and delivering high-performance, scalable applications. Passionate about leveraging modern tools and methodologies to enhance app performance and user experience.</string>
     

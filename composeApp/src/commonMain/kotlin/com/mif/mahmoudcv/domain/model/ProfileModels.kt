@@ -39,6 +39,7 @@ data class Experience(
 enum class JobType {
     FULL_TIME,
     PART_TIME,
+    CONTRACT,
     INTERN,
     FREELANCE
 }
@@ -95,6 +96,7 @@ data class Certificate(
     val name: String,
     val issuer: String
 )
+
 
 
 

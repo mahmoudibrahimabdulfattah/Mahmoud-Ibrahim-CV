@@ -12,6 +12,9 @@ import com.mif.mahmoudcv.domain.model.ProjectPlatform
 import com.mif.mahmoudcv.domain.model.Skill
 import com.mif.mahmoudcv.domain.model.SkillCategory
 import com.mif.mahmoudcv.domain.model.SkillLevel
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.todayIn
+import kotlin.time.Clock
 
 object CvDataProvider {
 
@@ -22,10 +25,8 @@ object CvDataProvider {
         return currentYear - CAREER_START_YEAR
     }
 
-    private fun getCurrentYear(): Int {
-        // Simple approach - in production you'd use expect/actual for platform-specific implementation
-        return 2025
-    }
+    private fun getCurrentYear(): Int =
+        Clock.System.todayIn(TimeZone.currentSystemDefault()).year
 
     const val PROFILE_IMAGE_URL: String = "https://raw.githubusercontent.com/mahmoudibrahimabdulfattah/profile-assets/main/profile.jpg"
     private const val LINKEDIN_URL: String = "https://www.linkedin.com/in/mahmoudibrahimabdulfattah/"
@@ -76,21 +77,20 @@ object CvDataProvider {
         return listOf(
             Experience(
                 id = 1,
-                title = Strings.exp1Title(),
+                title = Strings.exp0Title(),
                 company = "Telecom Egypt (WE)",
                 companyUrl = TELECOM_EGYPT_URL,
                 location = Strings.exp3Location(),
                 jobType = JobType.FULL_TIME,
-                startDate = "01/2023",
+                startDate = "05/2026",
                 endDate = Strings.exp3End(),
                 responsibilities = listOf(
-                    Strings.exp3Resp1(),
-                    Strings.exp3Resp2(),
-                    Strings.exp3Resp3(),
-                    Strings.exp3Resp4(),
-                    Strings.exp3Resp5()
+                    Strings.exp0Resp1(),
+                    Strings.exp0Resp2(),
+                    Strings.exp0Resp3(),
+                    Strings.exp0Resp4()
                 ),
-                technologies = listOf("Kotlin", "Coroutines", "Flow", "Compose", "Firebase")
+                technologies = listOf("Swift", "SwiftUI", "Kotlin", "Jetpack Compose", "Clean Architecture")
             ),
             Experience(
                 id = 2,
@@ -98,9 +98,9 @@ object CvDataProvider {
                 company = "WeightWatchers",
                 companyUrl = WEIGHTWATCHERS_URL,
                 location = Strings.exp1Location(),
-                jobType = JobType.FULL_TIME,
+                jobType = JobType.CONTRACT,
                 startDate = "08/2025",
-                endDate = "12/2025",
+                endDate = Strings.exp1End(),
                 responsibilities = listOf(
                     Strings.exp1Resp1(),
                     Strings.exp1Resp2(),
@@ -116,8 +116,8 @@ object CvDataProvider {
                 companyUrl = ISPACE_URL,
                 location = Strings.exp2Location(),
                 jobType = JobType.PART_TIME,
-                startDate = "08/2025",
-                endDate = "12/2025",
+                startDate = "06/2024",
+                endDate = "08/2025",
                 responsibilities = listOf(
                     Strings.exp2Resp1(),
                     Strings.exp2Resp2(),
@@ -128,6 +128,24 @@ object CvDataProvider {
             ),
             Experience(
                 id = 4,
+                title = Strings.exp1Title(),
+                company = "Telecom Egypt (WE)",
+                companyUrl = TELECOM_EGYPT_URL,
+                location = Strings.exp3Location(),
+                jobType = JobType.FULL_TIME,
+                startDate = "01/2023",
+                endDate = "08/2025",
+                responsibilities = listOf(
+                    Strings.exp3Resp1(),
+                    Strings.exp3Resp2(),
+                    Strings.exp3Resp3(),
+                    Strings.exp3Resp4(),
+                    Strings.exp3Resp5()
+                ),
+                technologies = listOf("Kotlin", "Coroutines", "Flow", "Compose", "Firebase")
+            ),
+            Experience(
+                id = 5,
                 title = Strings.exp4Title(),
                 company = "Spirit for Consultancy Services",
                 companyUrl = SPIRIT_URL,
@@ -144,7 +162,7 @@ object CvDataProvider {
                 technologies = listOf("Kotlin", "Flutter", "SAP Integration", "C# WCF")
             ),
             Experience(
-                id = 5,
+                id = 6,
                 title = Strings.exp5Title(),
                 company = "TE Data",
                 companyUrl = TE_DATA_URL,
@@ -172,9 +190,10 @@ object CvDataProvider {
                 icon = "code",
                 skills = listOf(
                     Skill("Kotlin", SkillLevel.EXPERT),
-                    Skill("Java"),
+                    Skill("Swift"),
                     Skill("Jetpack Compose"),
-                    Skill("Swift (iOS)"),
+                    Skill("SwiftUI"),
+                    Skill("Java"),
                     Skill("KMP (Kotlin Multiplatform)")
                 )
             ),
@@ -208,6 +227,7 @@ object CvDataProvider {
                     Skill("JUnit"),
                     Skill("Espresso"),
                     Skill("Android Studio"),
+                    Skill("Xcode"),
                     Skill("Git/GitHub")
                 )
             ),

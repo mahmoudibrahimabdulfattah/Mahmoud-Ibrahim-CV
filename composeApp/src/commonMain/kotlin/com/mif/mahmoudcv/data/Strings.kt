@@ -18,9 +18,9 @@ object Strings {
     fun profileBio(years: Int): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "مهندس برمجيات بخبرة تزيد عن $years سنوات في تطوير وتصميم وصيانة تطبيقات الاندرويد. متمكن من قيادة مشاريع تطوير الهاتف المحمول والتعاون مع فرق متعددة التخصصات وتقديم تطبيقات عالية الأداء وقابلة للتوسع. شغوف بالاستفادة من الأدوات والمنهجيات الحديثة لتحسين أداء التطبيقات وتجربة المستخدم."
+            "مهندس موبايل أول بخبرة تزيد عن $years سنوات في بناء تطبيقات الهاتف الأصلية — اندرويد باستخدام Kotlin و Jetpack Compose، و iOS باستخدام Swift و SwiftUI. متمكن من قيادة مشاريع تطوير الهاتف المحمول والتعاون مع فرق متعددة التخصصات وتقديم تطبيقات عالية الأداء وقابلة للتوسع يستخدمها ملايين المستخدمين."
         } else {
-            "Software Engineer with $years+ years of experience developing, designing, and maintaining Android applications. Skilled in leading mobile development projects, collaborating with cross-functional teams, and delivering high-performance, scalable applications. Passionate about leveraging modern tools and methodologies to enhance app performance and user experience."
+            "Senior Mobile Engineer with $years+ years of experience building native mobile applications — Android with Kotlin & Jetpack Compose, and iOS with Swift & SwiftUI. Skilled in leading mobile development projects, collaborating with cross-functional teams, and delivering high-performance, scalable applications used by millions of users."
         }
     }
 
@@ -44,13 +44,13 @@ object Strings {
     @Composable
     fun profileLastName(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "ابراهيم" else "Ibrahim"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "خليل" else "I. Khalil"
     }
 
     @Composable
     fun profileTitle(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس اندرويد أول" else "Sr. Android Engineer"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس موبايل أول — اندرويد و iOS" else "Senior Mobile Engineer — Android & iOS"
     }
 
     @Composable
@@ -86,6 +86,52 @@ object Strings {
 
     // Experience titles
     @Composable
+    fun exp0Title(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس موبايل أول (اندرويد و iOS)" else "Senior Mobile Engineer (Android & iOS)"
+    }
+
+    @Composable
+    fun exp0Resp1(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "بناء ميزات iOS أصلية باستخدام Swift و SwiftUI ضمن فريق iOS."
+        } else {
+            "Building native iOS features with Swift and SwiftUI as part of the iOS team."
+        }
+    }
+
+    @Composable
+    fun exp0Resp2(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "التطوير على المنصتين الأصليتين — Kotlin و Jetpack Compose على اندرويد و Swift و SwiftUI على iOS."
+        } else {
+            "Delivering across both native platforms — Kotlin/Jetpack Compose on Android and Swift/SwiftUI on iOS."
+        }
+    }
+
+    @Composable
+    fun exp0Resp3(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "تطبيق Clean Architecture و MVVM/MVI بشكل متسق عبر قواعد كود اندرويد و iOS."
+        } else {
+            "Applying Clean Architecture and MVVM/MVI consistently across Android and iOS codebases."
+        }
+    }
+
+    @Composable
+    fun exp0Resp4(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "التعاون مع فرق متعددة التخصصات لمواءمة الميزات وواجهات API والإصدارات عبر المنصات."
+        } else {
+            "Collaborating with cross-functional teams to align features, APIs, and releases across platforms."
+        }
+    }
+
+    @Composable
     fun exp1Title(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس اندرويد أول" else "Senior Android Engineer"
@@ -99,7 +145,7 @@ object Strings {
 
     @Composable
     fun exp1End(): String {
-        return "12/2025"
+        return "05/2026"
     }
 
     @Composable

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">محمود ابراهيم</string>
+    <string name="app_name">محمود خليل</string>
     
     <!-- Navigation -->
     <string name="nav_about">عني</string>
@@ -55,8 +55,8 @@
     
     <!-- CV Data - Profile -->
     <string name="profile_first_name">محمود</string>
-    <string name="profile_last_name">ابراهيم</string>
-    <string name="profile_title">مهندس اندرويد أول</string>
+    <string name="profile_last_name">خليل</string>
+    <string name="profile_title">مهندس موبايل أول — اندرويد و iOS</string>
     <string name="profile_location">القاهرة، مصر</string>
     <string name="profile_bio">مهندس برمجيات بخبرة تزيد عن %d سنوات في تطوير وتصميم وصيانة تطبيقات الاندرويد. متمكن من قيادة مشاريع تطوير الهاتف المحمول والتعاون مع فرق متعددة التخصصات وتقديم تطبيقات عالية الأداء وقابلة للتوسع. شغوف بالاستفادة من الأدوات والمنهجيات الحديثة لتحسين أداء التطبيقات وتجربة المستخدم.</string>
     

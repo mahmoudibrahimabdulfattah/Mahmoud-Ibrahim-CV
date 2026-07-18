@@ -64,6 +64,7 @@ kotlin {
             implementation(libs.navigation.compose)
             implementation(libs.ktor.client.core)
             implementation(libs.multiplatform.settings)
+            implementation(libs.kotlinx.datetime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

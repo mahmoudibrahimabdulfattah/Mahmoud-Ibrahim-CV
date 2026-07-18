@@ -125,12 +125,14 @@ private fun JobTypeBadge(
     val text: String = when (jobType) {
         JobType.FULL_TIME -> Strings.jobFullTime()
         JobType.PART_TIME -> Strings.jobPartTime()
+        JobType.CONTRACT -> Strings.jobContract()
         JobType.INTERN -> Strings.jobIntern()
         JobType.FREELANCE -> Strings.jobFreelance()
     }
     val (backgroundColor, textColor) = when (jobType) {
         JobType.FULL_TIME -> Primary.copy(alpha = 0.15f) to PrimaryLight
         JobType.PART_TIME -> Accent.copy(alpha = 0.15f) to Accent
+        JobType.CONTRACT -> Accent.copy(alpha = 0.15f) to Accent
         JobType.INTERN -> DarkTextMuted.copy(alpha = 0.15f) to DarkTextMuted
         JobType.FREELANCE -> Accent.copy(alpha = 0.15f) to Accent
     }
