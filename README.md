@@ -16,8 +16,7 @@ Built by [Mahmoud I. Khalil](https://www.linkedin.com/in/mahmoudibrahimabdulfatt
 
 | Android | iOS | Desktop | Web |
 |---------|-----|---------|-----|
-| <img width="291" height="648" alt="android" src="https://github.com/user-attachments/assets/e953102b-4c73-4456-8932-99ad472f7f9b" /> | _coming soon_ | <img width="422" height="795" alt="desktop" src="https://github.com/user-attachments/assets/6bdbdcd2-398c-471c-9522-38487feae57d" /> | <img width="1352" height="672" alt="web" src="https://github.com/user-attachments/assets/ea72c819-d53e-42d1-b7a4-8c20daa7f88e" /> |
-
+| <img width="291" height="648" alt="android" src="https://github.com/user-attachments/assets/e953102b-4c73-4456-8932-99ad472f7f9b" /> | <img width="331" height="750" alt="ios" src="https://github.com/user-attachments/assets/29ecc5c6-3dd2-4680-b654-be7a3de3d560" /> | <img width="422" height="795" alt="desktop" src="https://github.com/user-attachments/assets/6bdbdcd2-398c-471c-9522-38487feae57d" /> | <img width="1352" height="672" alt="web" src="https://github.com/user-attachments/assets/ea72c819-d53e-42d1-b7a4-8c20daa7f88e" /> |
 
 ## 🏗️ Architecture
 
