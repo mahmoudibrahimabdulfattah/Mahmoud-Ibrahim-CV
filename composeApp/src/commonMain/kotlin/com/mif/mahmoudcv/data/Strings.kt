@@ -516,9 +516,9 @@ object Strings {
     fun proj9Desc(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق أخبار مع تجربة تصفح حديثة لاستهلاك الأخبار السريع."
+            "قارئ أخبار بأسلوب TikTok مبني بـ Compose Multiplatform — كود واحد يعمل على اندرويد و iOS وسطح المكتب والويب، مع تخزين محلي للعمل دون اتصال."
         } else {
-            "News app with modern scrolling UX for quick news consumption."
+            "TikTok-style news reader built with Compose Multiplatform — one codebase on Android, iOS, Desktop, and Web, with offline-first caching."
         }
     }
 

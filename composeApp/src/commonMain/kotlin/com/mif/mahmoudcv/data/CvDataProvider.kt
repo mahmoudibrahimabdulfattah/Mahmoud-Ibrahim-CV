@@ -47,7 +47,7 @@ object CvDataProvider {
     private const val WE_HR_URL: String = "https://play.google.com/store/search?q=WE%20HR&c=apps"
     private const val MY_WE_URL: String = "https://play.google.com/store/apps/details?id=com.ucare.we"
     private const val MOVIE_CATALOG_URL: String = "https://github.com/mahmoudibrahimabdulfattah/MovieCatalogApp"
-    private const val NEWS_SHORTS_URL: String = "https://github.com/mahmoudibrahimabdulfattah/NewsShorts"
+    private const val NEWS_SHORTS_URL: String = "https://github.com/mahmoudibrahimabdulfattah/NewsShortsCMP"
 
     @Composable
     fun getLocalizedProfileInfo(): ProfileInfo {
@@ -343,11 +343,11 @@ object CvDataProvider {
             ),
             Project(
                 id = 9,
-                name = "News Shorts",
+                name = "News Shorts CMP",
                 description = Strings.proj9Desc(),
                 url = NEWS_SHORTS_URL,
                 platform = ProjectPlatform.GITHUB,
-                technologies = listOf("Kotlin", "Jetpack Compose", "MVI", "Glide")
+                technologies = listOf("Kotlin", "Compose Multiplatform", "MVI", "Koin", "Ktor")
             )
         )
     }
