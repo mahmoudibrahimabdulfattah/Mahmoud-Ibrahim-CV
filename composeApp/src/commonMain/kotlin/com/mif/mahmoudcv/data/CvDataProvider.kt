@@ -31,7 +31,7 @@ object CvDataProvider {
     const val PROFILE_IMAGE_URL: String = "https://raw.githubusercontent.com/mahmoudibrahimabdulfattah/profile-assets/main/profile.jpg"
     private const val LINKEDIN_URL: String = "https://www.linkedin.com/in/mahmoudibrahimabdulfattah/"
     private const val GITHUB_URL: String = "https://github.com/mahmoudibrahimabdulfattah"
-    private const val CV_URL: String = "https://drive.google.com/file/d/1ry2IWShhbb-j-YUrfLYUq36GlcHaxijD/view?usp=drive_link"
+    private const val CV_URL: String = "https://drive.google.com/file/d/1USHmdcAgjljq444uuJswfn3VPDF88FA0/view?usp=drive_link"
     private const val PHONE: String = "+20 114 710 4982"
     private const val EMAIL: String = "mahmoudibrahimabdulfattah@gmail.com"
 
