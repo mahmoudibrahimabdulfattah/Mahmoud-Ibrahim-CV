@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Rocket
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -20,11 +22,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.CvDataProvider
 import com.mif.mahmoudcv.data.Strings
+import com.mif.mahmoudcv.presentation.components.FeaturedProjectCard
 import com.mif.mahmoudcv.presentation.components.ProjectCard
 import com.mif.mahmoudcv.presentation.components.SectionTitle
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
 fun ProjectsScreen(
@@ -36,14 +41,26 @@ fun ProjectsScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
+            .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(top = 24.dp, bottom = 100.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(0.dp)
     ) {
         item {
             SectionTitle(
                 title = Strings.sectionProjects(),
-                icon = Icons.Default.Rocket
+                icon = Icons.Default.Rocket,
+                modifier = Modifier.padding(horizontal = 12.dp)
+            )
+        }
+        item {
+            Text(
+                text = Strings.featuredProjects(),
+                style = MaterialTheme.typography.titleMedium,
+                color = AppColors.signal,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .padding(top = 8.dp, bottom = 2.dp)
             )
         }
         itemsIndexed(
@@ -62,7 +79,7 @@ fun ProjectsScreen(
                             animationSpec = tween(500)
                         )
             ) {
-                ProjectCard(project = project)
+                FeaturedProjectCard(project = project)
             }
         }
         itemsIndexed(
@@ -86,4 +103,3 @@ fun ProjectsScreen(
         }
     }
 }
-

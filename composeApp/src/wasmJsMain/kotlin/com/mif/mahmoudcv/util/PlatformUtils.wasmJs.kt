@@ -2,6 +2,8 @@ package com.mif.mahmoudcv.util
 
 import kotlinx.browser.window
 
+actual fun currentPlatform(): AppPlatform = AppPlatform.WEB
+
 actual fun openUrl(url: String) {
     window.open(url, "_blank")
 }
@@ -14,7 +16,6 @@ actual fun openPhoneDialer(phoneNumber: String) {
 actual fun openEmailClient(email: String) {
     window.open("mailto:$email", "_self")
 }
-
 
 
 

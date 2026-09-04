@@ -5,6 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,11 +33,10 @@ import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Certificate
 import com.mif.mahmoudcv.domain.model.Education
-import com.mif.mahmoudcv.theme.Accent
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 fun EducationCard(
     education: Education,
     modifier: Modifier = Modifier
@@ -58,7 +59,7 @@ fun EducationCard(
                 Text(
                     text = education.university,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryLight,
+                    color = AppColors.signal,
                     modifier = if (education.universityUrl != null) {
                         Modifier.clickable {
                             uriHandler.openUri(education.universityUrl)
@@ -71,7 +72,10 @@ fun EducationCard(
             DateBadge(date = "${education.startYear} - ${education.endYear}")
         }
         Spacer(modifier = Modifier.height(20.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
             EducationBadge(
                 icon = Icons.Default.Star,
                 text = Strings.gpaLabel(education.gpa)
@@ -93,8 +97,8 @@ private fun EducationBadge(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(Primary.copy(alpha = 0.1f))
-            .border(1.dp, Primary.copy(alpha = 0.2f), RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .border(1.dp, AppColors.signal.copy(alpha = 0.32f), RoundedCornerShape(8.dp))
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -102,13 +106,13 @@ private fun EducationBadge(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = Accent,
+            tint = AppColors.signal,
             modifier = Modifier.size(18.dp)
         )
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
-            color = PrimaryLight,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
             fontWeight = FontWeight.Medium
         )
     }
@@ -132,7 +136,7 @@ fun CertificateCard(
         Icon(
             imageVector = Icons.Default.WorkspacePremium,
             contentDescription = null,
-            tint = Accent,
+            tint = AppColors.signal,
             modifier = Modifier.size(32.dp)
         )
         Column(modifier = Modifier.weight(1f)) {
@@ -166,4 +170,3 @@ fun CertificatesGrid(
         }
     }
 }
-

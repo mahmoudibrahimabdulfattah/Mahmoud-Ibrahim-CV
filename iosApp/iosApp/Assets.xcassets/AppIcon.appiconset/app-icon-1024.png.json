@@ -1,0 +1,10 @@
+{
+  "prompt": "Deterministic vector-derived iOS app icon. Source geometry: composeApp/src/androidMain/res/drawable/ic_launcher_background.xml and ic_launcher_foreground.xml, cross-checked against iosApp/iosApp/Assets.xcassets/SplashLogo.imageset/splash-logo.svg and the approved Category Standard / Product Proof First comp. Render at 1024×1024 with an opaque solid #155EEF square background; preserve the established centered white M polygon exactly; set the signature dot to #84ADFF. No gradient, shadow, rounded-corner mask, extra text, texture, or redesign.",
+  "strategy": "Deterministic palette correction of the existing vector-aligned raster; geometry preserved pixel-for-pixel.",
+  "source_assets": [
+    "composeApp/src/androidMain/res/drawable/ic_launcher_background.xml",
+    "composeApp/src/androidMain/res/drawable/ic_launcher_foreground.xml",
+    "iosApp/iosApp/Assets.xcassets/SplashLogo.imageset/splash-logo.svg",
+    ".impeccable/mocks/category-standard-product-proof-first.webp"
+  ]
+}

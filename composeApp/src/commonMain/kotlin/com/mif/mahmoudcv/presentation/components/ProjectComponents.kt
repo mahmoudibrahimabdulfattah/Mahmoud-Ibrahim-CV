@@ -1,5 +1,6 @@
 package com.mif.mahmoudcv.presentation.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -11,208 +12,215 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Business
-import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.Shop
-import androidx.compose.material3.Icon
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Project
 import com.mif.mahmoudcv.domain.model.ProjectPlatform
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
+import com.mif.mahmoudcv.theme.AppColors
+import mahmoudibrahimcv.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ProjectCard(
     project: Project,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    showDivider: Boolean = true,
+    descriptionMaxLines: Int = 3,
+    titleWeight: FontWeight = FontWeight.SemiBold,
+    artSize: Dp = 56.dp,
+    topPadding: Dp = 18.dp,
+    horizontalPadding: Dp = 12.dp
 ) {
     val uriHandler = LocalUriHandler.current
-    val cardBackground: Brush = if (project.isFeatured) {
-        Brush.linearGradient(
-            colors = listOf(
-                Primary.copy(alpha = 0.1f),
-                MaterialTheme.colorScheme.surfaceVariant
-            )
-        )
-    } else {
-        Brush.linearGradient(
-            colors = listOf(
-                MaterialTheme.colorScheme.surfaceVariant,
-                MaterialTheme.colorScheme.surfaceVariant
-            )
-        )
-    }
-    val borderColor: Color = if (project.isFeatured) {
-        Primary.copy(alpha = 0.3f)
-    } else {
-        MaterialTheme.colorScheme.outline
-    }
+
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(brush = cardBackground)
-            .border(1.dp, borderColor, RoundedCornerShape(16.dp))
             .clickable(enabled = project.url != null) {
-                project.url?.let { uriHandler.openUri(it) }
+                project.url?.let(uriHandler::openUri)
             }
-            .padding(20.dp)
+            .padding(horizontal = horizontalPadding)
+            .padding(top = topPadding)
     ) {
-        if (project.isFeatured) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(3.dp)
-                    .offset(y = (-20).dp)
-                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(Primary, PrimaryLight)
-                        )
-                    )
-            )
-        }
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.Top
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.weight(1f)
-            ) {
+            ProjectArt(project = project, size = artSize)
+            Spacer(modifier = Modifier.width(14.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = project.name,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontWeight = titleWeight,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    ProjectDestinationLabel(project = project)
+                }
+
+                Spacer(modifier = Modifier.size(6.dp))
                 Text(
-                    text = project.name,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = if (project.url != null) PrimaryLight else MaterialTheme.colorScheme.onSurface,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 1,
+                    text = project.description,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    lineHeight = 22.sp,
+                    maxLines = descriptionMaxLines,
                     overflow = TextOverflow.Ellipsis
                 )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                when {
-                    project.isFeatured -> ProjectBadge(text = Strings.featured().uppercase(), isFeatured = true)
-                    project.isInternal -> ProjectBadge(text = Strings.internalProject().uppercase(), isFeatured = false)
-                }
-                Icon(
-                    imageVector = when (project.platform) {
-                        ProjectPlatform.PLAY_STORE -> Icons.Default.Shop
-                        ProjectPlatform.GITHUB -> Icons.Default.Code
-                        ProjectPlatform.INTERNAL -> Icons.Default.Business
-                    },
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                    modifier = Modifier.size(20.dp)
-                )
+                Spacer(modifier = Modifier.size(10.dp))
+                ProjectTechnologyChips(technologies = project.technologies)
             }
         }
-        Spacer(modifier = Modifier.height(12.dp))
-        Text(
-            text = project.description,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            lineHeight = 22.sp,
-            maxLines = 3,
-            overflow = TextOverflow.Ellipsis
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
-        ) {
-            project.technologies.forEach { tech ->
-                ProjectTechChip(text = tech)
-            }
+        if (showDivider) {
+            Spacer(modifier = Modifier.size(18.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         }
     }
 }
 
 @Composable
-private fun ProjectBadge(
-    text: String,
-    isFeatured: Boolean,
-    modifier: Modifier = Modifier
-) {
-    val backgroundColor: Brush = if (isFeatured) {
-        Brush.horizontalGradient(listOf(Primary, PrimaryLight))
+fun FeaturedProjectCard(project: Project, modifier: Modifier = Modifier) {
+    // Featured status is structural, not promotional. The distinction is one tonal step
+    // off the canvas plus a firmer edge -- the two devices the design system sanctions
+    // before elevation -- against plain rows that stay on the bare background. No pill,
+    // no stripe, no gradient, no promotional colour.
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(12.dp))
+            .padding(horizontal = 12.dp, vertical = 6.dp)
+    ) {
+        ProjectCard(
+            project = project,
+            showDivider = false,
+            descriptionMaxLines = 5,
+            titleWeight = FontWeight.Bold,
+            artSize = 64.dp,
+            topPadding = 10.dp,
+            horizontalPadding = 0.dp
+        )
+    }
+}
+
+@Composable
+private fun ProjectArt(project: Project, size: Dp) {
+    val art: DrawableResource? = projectDrawable(project.name)
+    if (art != null) {
+        Image(
+            painter = painterResource(art),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(size)
+                .clip(RoundedCornerShape(14.dp))
+        )
     } else {
-        Brush.horizontalGradient(
-            listOf(
-                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f),
-                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
+        Box(
+            modifier = Modifier
+                .size(size)
+                .clip(RoundedCornerShape(14.dp))
+                .background(Color(0xFF245B78)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "DC",
+                color = Color.White,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = (size.value * 0.32f).sp
             )
-        )
-    }
-    val textColor: Color = if (isFeatured) Color.White else MaterialTheme.colorScheme.onSurfaceVariant
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(50))
-            .background(brush = backgroundColor)
-            .padding(horizontal = 10.dp, vertical = 4.dp)
-    ) {
-        Text(
-            text = text,
-            fontSize = 10.sp,
-            fontWeight = FontWeight.Bold,
-            color = textColor,
-            letterSpacing = 0.5.sp
-        )
+        }
     }
 }
 
-@Composable
-private fun ProjectTechChip(
-    text: String,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(4.dp))
-            .background(MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f))
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-    ) {
-        Text(
-            text = text,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
-        )
-    }
+private fun projectDrawable(projectName: String): DrawableResource? = when (projectName) {
+    "WeightWatchers" -> Res.drawable.project_weightwatchers
+    "SGS Super App" -> Res.drawable.project_sgs_super_app
+    "News Shorts" -> Res.drawable.project_news_shorts
+    "Smart Mentor" -> Res.drawable.project_smart_mentor
+    "WE Attend" -> Res.drawable.project_we_attend
+    "WE HR" -> Res.drawable.project_we_hr
+    "Interactive CV" -> Res.drawable.project_interactive_cv
+    "Mystery Shopper" -> Res.drawable.project_mystery_shopper
+    "Data Cleansing" -> null
+    else -> null
 }
 
 @Composable
-fun FeaturedProjectCard(
-    project: Project,
-    modifier: Modifier = Modifier
-) {
-    ProjectCard(
-        project = project,
-        modifier = modifier
+private fun ProjectDestinationLabel(project: Project) {
+    val destination = when (project.platform) {
+        ProjectPlatform.PLAY_STORE -> Strings.destinationPlayStore()
+        ProjectPlatform.GITHUB -> Strings.destinationGithub()
+        ProjectPlatform.INTERNAL -> Strings.destinationInternal()
+    }
+    // No external-link glyph beside the name. The website needs one because a link inside
+    // a page has to advertise that it leaves; a whole card that is itself the tap target
+    // does not. `OpenInNew` also renders as an illegible slashed square at 13dp once the
+    // auto-mirrored RTL variant kicks in, so it was reading as a broken image.
+    Text(
+        text = destination,
+        style = MaterialTheme.typography.labelSmall,
+        color = AppColors.signal,
+        fontWeight = FontWeight.Medium,
+        maxLines = 1
     )
 }
 
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun ProjectTechnologyChips(technologies: List<String>) {
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp)
+    ) {
+        technologies.forEach { tech ->
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(99.dp))
+                    .border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.outlineVariant,
+                        shape = RoundedCornerShape(99.dp)
+                    )
+                    .padding(horizontal = 10.dp, vertical = 5.dp)
+            ) {
+                Text(
+                    text = tech,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 1
+                )
+            }
+        }
+    }
+}

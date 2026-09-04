@@ -3,7 +3,7 @@
     <style name="Theme.MahmoudIbrahimCV" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:windowBackground">@color/light_background</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:enforceNavigationBarContrast">false</item>
         <item name="android:enforceStatusBarContrast">false</item>
@@ -11,7 +11,7 @@
     
     <!-- Splash Screen Theme - Optimized for fast display -->
     <style name="Theme.MahmoudIbrahimCV.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/dark_background</item>
+        <item name="windowSplashScreenBackground">@color/light_background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
         <!-- Removed icon background color for faster rendering -->
         <item name="postSplashScreenTheme">@style/Theme.MahmoudIbrahimCV</item>

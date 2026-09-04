@@ -2,47 +2,45 @@ package com.mif.mahmoudcv.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Primary Colors (Teal)
-val Primary: Color = Color(0xFF0F766E)
-val PrimaryDark: Color = Color(0xFF0D5A54)
-val PrimaryLight: Color = Color(0xFF14B8A6)
+// Shared portfolio identity: crisp product blue, neutral surfaces, no decorative gradients.
+val Primary: Color = Color(0xFF155EEF)
+val PrimaryDark: Color = Color(0xFF004EEB)
+val PrimaryLight: Color = Color(0xFF175CD3)
 
-// Accent Colors (Amber/Orange)
-val Accent: Color = Color(0xFFF59E0B)
-val AccentLight: Color = Color(0xFFFBBF24)
+// The action colour never changes between themes. It is the fill behind white
+// content on the primary Email button, where it reads 5.4:1 on either canvas.
+val ActionBlue: Color = Color(0xFF155EEF)
+val OnActionBlue: Color = Color(0xFFFFFFFF)
 
-// Dark Theme Colors
-val DarkBackground: Color = Color(0xFF0F172A)
-val DarkBackgroundDarker: Color = Color(0xFF020617)
-val DarkSurface: Color = Color(0xFF1E293B)
-val DarkCardBackground: Color = Color(0x801E293B)
-val DarkCardBorder: Color = Color(0x1A94A3B8)
-val DarkTextPrimary: Color = Color(0xFFF1F5F9)
-val DarkTextSecondary: Color = Color(0xFF94A3B8)
-val DarkTextMuted: Color = Color(0xFF64748B)
+// The signal colour is the same blue in light, and lifts in dark. It is used
+// for anything blue that is *drawn as ink* rather than filled: icons, links,
+// the role line, selected navigation, tag text, borders. #155EEF as ink on the
+// dark canvas is 3.46:1 and fails; #84ADFF is 8.38:1 and passes.
+val SignalBlueLight: Color = Color(0xFF155EEF)
+val SignalBlueDark: Color = Color(0xFF84ADFF)
 
-// Light Theme Colors
-val LightBackground: Color = Color(0xFFF8FAFC)
-val LightBackgroundDarker: Color = Color(0xFFE2E8F0)
+val Accent: Color = Color(0xFF344054)
+val AccentLight: Color = Color(0xFF667085)
+
+val DarkBackground: Color = Color(0xFF0B1220)
+val DarkBackgroundDarker: Color = Color(0xFF070D17)
+val DarkSurface: Color = Color(0xFF111A2B)
+val DarkCardBackground: Color = Color(0xFF18243A)
+val DarkCardBorder: Color = Color(0xFF31415B)
+val DarkTextPrimary: Color = Color(0xFFF9FAFB)
+val DarkTextSecondary: Color = Color(0xFFC8D1E0)
+val DarkTextMuted: Color = Color(0xFFA2AEC0)
+
+val LightBackground: Color = Color(0xFFFFFFFF)
+val LightBackgroundDarker: Color = Color(0xFFF2F4F7)
 val LightSurface: Color = Color(0xFFFFFFFF)
-val LightCardBackground: Color = Color(0xCCFFFFFF)
-val LightCardBorder: Color = Color(0x1A0F172A)
-val LightTextPrimary: Color = Color(0xFF0F172A)
-val LightTextSecondary: Color = Color(0xFF475569)
-val LightTextMuted: Color = Color(0xFF64748B)
+val LightCardBackground: Color = Color(0xFFF8FAFC)
+val LightCardBorder: Color = Color(0xFFD0D5DD)
+val LightTextPrimary: Color = Color(0xFF101828)
+val LightTextSecondary: Color = Color(0xFF344054)
+val LightTextMuted: Color = Color(0xFF667085)
 
-// Gradient Colors (for reference in Canvas drawings)
-val GradientPrimaryStart: Color = Primary
-val GradientPrimaryEnd: Color = PrimaryLight
-val GradientAccentStart: Color = Accent
-val GradientAccentEnd: Color = AccentLight
-
-// Status Colors
-val Success: Color = Color(0xFF22C55E)
-val Error: Color = Color(0xFFEF4444)
-val Warning: Color = Color(0xFFF59E0B)
-val Info: Color = Color(0xFF3B82F6)
-
-
-
-
+val Success: Color = Color(0xFF17B26A)
+val Error: Color = Color(0xFFD92D20)
+val Warning: Color = Color(0xFFF79009)
+val Info: Color = Primary

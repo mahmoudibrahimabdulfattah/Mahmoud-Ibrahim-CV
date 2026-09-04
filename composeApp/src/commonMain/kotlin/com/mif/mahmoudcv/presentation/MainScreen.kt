@@ -1,71 +1,65 @@
 package com.mif.mahmoudcv.presentation
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.mif.mahmoudcv.data.LocalSettingsManager
+import com.mif.mahmoudcv.presentation.navigation.AppNavigationRail
 import com.mif.mahmoudcv.presentation.navigation.BottomNavBar
 import com.mif.mahmoudcv.presentation.navigation.NavGraph
-import com.mif.mahmoudcv.theme.Accent
-import com.mif.mahmoudcv.theme.Primary
 
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
-    val settingsManager = LocalSettingsManager.current
-    val isDarkTheme: Boolean = settingsManager.isDarkTheme
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.radialGradient(
-                        colors = listOf(
-                            Primary.copy(alpha = if (isDarkTheme) 0.12f else 0.06f),
-                            Color.Transparent
-                        ),
-                        center = Offset(0.2f * 1000, 0.3f * 1000),
-                        radius = 1000f
-                    )
-                )
-                .background(
-                    brush = Brush.radialGradient(
-                        colors = listOf(
-                            Accent.copy(alpha = if (isDarkTheme) 0.06f else 0.03f),
-                            Color.Transparent
-                        ),
-                        center = Offset(0.8f * 1000, 0.7f * 1000),
-                        radius = 800f
-                    )
-                )
-        )
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val useNavigationRail = maxWidth >= 840.dp
+
         Scaffold(
-            containerColor = Color.Transparent,
+            containerColor = MaterialTheme.colorScheme.background,
             contentWindowInsets = WindowInsets.systemBars,
             bottomBar = {
-                BottomNavBar(navController = navController)
+                if (!useNavigationRail) {
+                    BottomNavBar(navController = navController)
+                }
             }
         ) { paddingValues ->
-            NavGraph(
-                navController = navController,
-                modifier = Modifier.padding(paddingValues)
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+            ) {
+                if (useNavigationRail) {
+                    AppNavigationRail(
+                        navController = navController,
+                        modifier = Modifier.fillMaxHeight()
+                    )
+                }
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.TopCenter
+                ) {
+                    NavGraph(
+                        navController = navController,
+                        modifier = Modifier
+                            .widthIn(max = 1120.dp)
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                    )
+                }
+            }
         }
     }
 }
-

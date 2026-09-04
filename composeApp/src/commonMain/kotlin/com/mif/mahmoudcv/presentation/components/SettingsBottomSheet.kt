@@ -23,7 +23,6 @@ import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Language
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -36,7 +35,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -45,9 +43,7 @@ import androidx.compose.ui.unit.sp
 import com.mif.mahmoudcv.data.AppLanguage
 import com.mif.mahmoudcv.data.LocalSettingsManager
 import com.mif.mahmoudcv.data.Strings
-import com.mif.mahmoudcv.theme.Accent
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
 fun SettingsButton(
@@ -56,16 +52,9 @@ fun SettingsButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier
-            .size(48.dp)
-            .shadow(
-                elevation = 8.dp,
-                shape = CircleShape,
-                spotColor = Primary.copy(alpha = 0.3f)
-            ),
+        modifier = modifier.size(48.dp),
         shape = CircleShape,
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        border = ButtonDefaults.outlinedButtonBorder(enabled = true)
+        color = Color.Transparent
     ) {
         Box(
             contentAlignment = Alignment.Center,
@@ -74,8 +63,8 @@ fun SettingsButton(
             Icon(
                 imageVector = Icons.Default.Settings,
                 contentDescription = Strings.settings(),
-                tint = PrimaryLight,
-                modifier = Modifier.size(24.dp)
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(22.dp)
             )
         }
     }
@@ -175,7 +164,7 @@ private fun SettingsSection(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = PrimaryLight,
+                tint = AppColors.signal,
                 modifier = Modifier.size(22.dp)
             )
             Spacer(modifier = Modifier.width(10.dp))
@@ -222,12 +211,12 @@ private fun ThemeOption(
     modifier: Modifier = Modifier
 ) {
     val backgroundColor: Color by animateColorAsState(
-        targetValue = if (isSelected) Primary else MaterialTheme.colorScheme.surface,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
         animationSpec = tween(200),
         label = "backgroundColor"
     )
     val textColor: Color by animateColorAsState(
-        targetValue = if (isSelected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
         animationSpec = tween(200),
         label = "textColor"
     )
@@ -287,12 +276,12 @@ private fun LanguageOption(
     modifier: Modifier = Modifier
 ) {
     val backgroundColor: Color by animateColorAsState(
-        targetValue = if (isSelected) Accent else MaterialTheme.colorScheme.surface,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
         animationSpec = tween(200),
         label = "backgroundColor"
     )
     val textColor: Color by animateColorAsState(
-        targetValue = if (isSelected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+        targetValue = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
         animationSpec = tween(200),
         label = "textColor"
     )

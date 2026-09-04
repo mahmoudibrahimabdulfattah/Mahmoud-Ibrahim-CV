@@ -3,6 +3,8 @@ package com.mif.mahmoudcv.util
 import platform.Foundation.NSURL
 import platform.UIKit.UIApplication
 
+actual fun currentPlatform(): AppPlatform = AppPlatform.IOS
+
 actual fun openUrl(url: String) {
     val nsUrl = NSURL.URLWithString(url) ?: return
     UIApplication.sharedApplication.openURL(nsUrl)
@@ -20,7 +22,6 @@ actual fun openEmailClient(email: String) {
     val nsUrl = NSURL.URLWithString(mailtoUrl) ?: return
     UIApplication.sharedApplication.openURL(nsUrl)
 }
-
 
 
 

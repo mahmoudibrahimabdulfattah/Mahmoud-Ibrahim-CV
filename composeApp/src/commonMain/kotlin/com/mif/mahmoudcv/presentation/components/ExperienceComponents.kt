@@ -30,10 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Experience
 import com.mif.mahmoudcv.domain.model.JobType
-import com.mif.mahmoudcv.theme.Accent
-import com.mif.mahmoudcv.theme.DarkTextMuted
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
+import com.mif.mahmoudcv.theme.AppColors
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -71,7 +68,7 @@ fun ExperienceCard(
                 Text(
                     text = experience.company,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryLight,
+                    color = AppColors.signal,
                     textDecoration = TextDecoration.None,
                     modifier = Modifier.clickable {
                         uriHandler.openUri(experience.companyUrl)
@@ -81,23 +78,10 @@ fun ExperienceCard(
                 Text(
                     text = experience.company,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryLight
+                    color = AppColors.signal
                 )
             }
-            Text(
-                text = "•",
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
-                fontSize = 10.sp
-            )
-            Text(
-                text = "📍",
-                fontSize = 12.sp
-            )
-            Text(
-                text = experience.location,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-            )
+            LocationTag(location = experience.location)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -130,11 +114,11 @@ private fun JobTypeBadge(
         JobType.FREELANCE -> Strings.jobFreelance()
     }
     val (backgroundColor, textColor) = when (jobType) {
-        JobType.FULL_TIME -> Primary.copy(alpha = 0.15f) to PrimaryLight
-        JobType.PART_TIME -> Accent.copy(alpha = 0.15f) to Accent
-        JobType.CONTRACT -> Accent.copy(alpha = 0.15f) to Accent
-        JobType.INTERN -> DarkTextMuted.copy(alpha = 0.15f) to DarkTextMuted
-        JobType.FREELANCE -> Accent.copy(alpha = 0.15f) to Accent
+        JobType.FULL_TIME -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
+        JobType.PART_TIME -> MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
+        JobType.CONTRACT -> MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
+        JobType.INTERN -> MaterialTheme.colorScheme.surface to MaterialTheme.colorScheme.onSurfaceVariant
+        JobType.FREELANCE -> MaterialTheme.colorScheme.tertiaryContainer to MaterialTheme.colorScheme.onTertiaryContainer
     }
     Box(
         modifier = modifier
@@ -165,7 +149,7 @@ private fun ResponsibilityItem(
                 .padding(top = 8.dp)
                 .size(6.dp)
                 .clip(CircleShape)
-                .background(PrimaryLight)
+                .background(AppColors.signal)
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(
@@ -176,4 +160,3 @@ private fun ResponsibilityItem(
         )
     }
 }
-
