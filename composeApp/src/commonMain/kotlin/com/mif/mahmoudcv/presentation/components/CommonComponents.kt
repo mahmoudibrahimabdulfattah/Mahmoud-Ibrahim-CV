@@ -1,6 +1,7 @@
 package com.mif.mahmoudcv.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mif.mahmoudcv.theme.AppColors
 import com.mif.mahmoudcv.theme.DateTextStyle
 
 @Composable
@@ -58,7 +60,7 @@ fun SectionTitle(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(28.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))
@@ -74,7 +76,7 @@ fun SectionTitle(
                     .width(60.dp)
                     .height(4.dp)
                     .clip(RoundedCornerShape(2.dp))
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(AppColors.signal)
             )
         }
     }
@@ -159,27 +161,24 @@ fun SkillPill(
     isExpert: Boolean = false,
     isSoft: Boolean = false
 ) {
-    val backgroundColor: Color = when {
-        isExpert -> MaterialTheme.colorScheme.primary
-        isSoft -> MaterialTheme.colorScheme.secondaryContainer
-        else -> MaterialTheme.colorScheme.surfaceVariant
-    }
-    val textColor: Color = when {
-        isExpert -> MaterialTheme.colorScheme.onPrimary
-        isSoft -> MaterialTheme.colorScheme.onSecondaryContainer
-        else -> MaterialTheme.colorScheme.onSurfaceVariant
-    }
+    // The chip sits on a `surfaceVariant` card, so it cannot use `surfaceVariant`
+    // as its own fill -- that was the bug. A one-pixel outline over the card
+    // reads at every theme and keeps the group flat, per the Flat-by-Default rule.
+    val borderColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.outlineVariant
+    val textColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.onSurfaceVariant
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(backgroundColor)
-            .padding(horizontal = 14.dp, vertical = 8.dp)
+            .border(1.dp, borderColor, RoundedCornerShape(8.dp))
+            .padding(horizontal = 12.dp, vertical = 7.dp)
     ) {
         Text(
             text = text,
             color = textColor,
             fontSize = 13.sp,
-            fontWeight = FontWeight.Medium
+            // Expert is marked by weight as well as colour, so the level is not
+            // encoded in colour alone.
+            fontWeight = if (isExpert) FontWeight.SemiBold else FontWeight.Medium
         )
     }
 }
@@ -225,7 +224,7 @@ fun LocationTag(
         Icon(
             imageVector = Icons.Outlined.LocationOn,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(16.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
@@ -245,7 +244,7 @@ fun DateBadge(
     Text(
         text = date,
         style = DateTextStyle,
-        color = MaterialTheme.colorScheme.primary,
+        color = AppColors.signal,
         modifier = modifier
     )
 }
@@ -264,7 +263,7 @@ fun BulletPoint(
                 .padding(top = 8.dp)
                 .size(6.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
+                .background(AppColors.signal)
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(
@@ -274,4 +273,3 @@ fun BulletPoint(
         )
     }
 }
-

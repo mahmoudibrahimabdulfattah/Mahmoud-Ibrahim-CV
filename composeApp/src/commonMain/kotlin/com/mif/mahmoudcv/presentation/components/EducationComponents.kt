@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Certificate
 import com.mif.mahmoudcv.domain.model.Education
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
 fun EducationCard(
@@ -55,7 +56,7 @@ fun EducationCard(
                 Text(
                     text = education.university,
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = AppColors.signal,
                     modifier = if (education.universityUrl != null) {
                         Modifier.clickable {
                             uriHandler.openUri(education.universityUrl)
@@ -91,7 +92,7 @@ private fun EducationBadge(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
             .background(MaterialTheme.colorScheme.primaryContainer)
-            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.32f), RoundedCornerShape(8.dp))
+            .border(1.dp, AppColors.signal.copy(alpha = 0.32f), RoundedCornerShape(8.dp))
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -99,7 +100,7 @@ private fun EducationBadge(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(18.dp)
         )
         Text(
@@ -129,7 +130,7 @@ fun CertificateCard(
         Icon(
             imageVector = Icons.Default.WorkspacePremium,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(32.dp)
         )
         Column(modifier = Modifier.weight(1f)) {

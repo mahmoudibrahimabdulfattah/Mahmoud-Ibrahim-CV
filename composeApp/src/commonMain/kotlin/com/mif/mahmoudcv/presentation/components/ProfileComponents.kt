@@ -35,7 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -46,6 +45,7 @@ import coil3.compose.AsyncImage
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Language
 import com.mif.mahmoudcv.domain.model.ProfileInfo
+import com.mif.mahmoudcv.theme.AppColors
 import mahmoudibrahimcv.composeapp.generated.resources.Res
 import mahmoudibrahimcv.composeapp.generated.resources.ic_github
 import org.jetbrains.compose.resources.painterResource
@@ -69,7 +69,7 @@ fun ProfileHeader(
                 modifier = Modifier
                     .size(72.dp)
                     .clip(CircleShape)
-                    .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape),
+                    .border(2.dp, AppColors.signal, CircleShape),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -84,7 +84,7 @@ fun ProfileHeader(
                 Text(
                     text = profileInfo.title,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = AppColors.signal,
                     fontWeight = FontWeight.SemiBold
                 )
                 Spacer(modifier = Modifier.height(4.dp))
@@ -130,9 +130,9 @@ private fun ProofRow(years: Int) {
                 .padding(vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ProofItem(value = "$years+", label = Strings.proofYears(), modifier = Modifier.weight(1f))
+            ProofItem(value = ltr("$years+"), label = Strings.proofYears(), modifier = Modifier.weight(1f))
             ProofDivider()
-            ProofItem(value = "Android · iOS · KMP", label = Strings.proofPlatforms(), modifier = Modifier.weight(1f))
+            ProofItem(value = ltr("Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP"), label = Strings.proofPlatforms(), modifier = Modifier.weight(1f))
         }
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         Row(
@@ -141,12 +141,20 @@ private fun ProofRow(years: Int) {
                 .padding(vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ProofItem(value = "10M+", label = Strings.proofDownloads(), modifier = Modifier.weight(1f))
+            ProofItem(value = ltr("10M+"), label = Strings.proofDownloads(), modifier = Modifier.weight(1f))
             ProofDivider()
-            ProofItem(value = "7+", label = Strings.proofApps(), modifier = Modifier.weight(1f))
+            ProofItem(value = ltr("7+"), label = Strings.proofApps(), modifier = Modifier.weight(1f))
         }
     }
 }
+
+/**
+ * Wraps a Latin run in a left-to-right isolate so the bidi algorithm resolves it
+ * as one unit. Without this, a trailing `+` on "6+" is a neutral character that
+ * takes the surrounding RTL direction and renders as "+6" -- a different claim.
+ * This is the Unicode equivalent of the `<bdi dir="ltr">` the website uses.
+ */
+private fun ltr(value: String): String = "\u2066$value\u2069"
 
 @Composable
 private fun ProofDivider() {
@@ -223,28 +231,100 @@ private fun ContactInfoItem(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(20.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
-            color = if (onClick != null) MaterialTheme.colorScheme.primary
+            color = if (onClick != null) AppColors.signal
             else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }
 
 @Composable
-fun BioSection(bio: String, modifier: Modifier = Modifier) {
-    Text(
-        text = bio,
-        style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        lineHeight = 28.sp,
-        modifier = modifier
-    )
+fun BioSection(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(
+            text = Strings.aboutHeading(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurface,
+            fontWeight = FontWeight.Bold,
+            lineHeight = 26.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Text(
+            text = Strings.aboutBody(),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            lineHeight = 24.sp
+        )
+    }
+}
+
+@Composable
+fun DeliveryPathSection(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        Text(
+            text = Strings.processHeading(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(
+            text = Strings.processLede(),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            lineHeight = 22.sp
+        )
+        Spacer(modifier = Modifier.height(18.dp))
+        DeliveryStep(1, Strings.processStep1Title(), Strings.processStep1Body())
+        Spacer(modifier = Modifier.height(18.dp))
+        DeliveryStep(2, Strings.processStep2Title(), Strings.processStep2Body())
+        Spacer(modifier = Modifier.height(18.dp))
+        DeliveryStep(3, Strings.processStep3Title(), Strings.processStep3Body())
+    }
+}
+
+@Composable
+private fun DeliveryStep(ordinal: Int, title: String, body: String) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        // The ordinal is the content here -- the order of the three steps is the
+        // point of the section -- so it is drawn, not decorative. A bordered
+        // circle keeps it flat rather than adding a filled badge.
+        Box(
+            modifier = Modifier
+                .size(28.dp)
+                .border(1.dp, AppColors.signal, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = ordinal.toString(),
+                style = MaterialTheme.typography.labelMedium,
+                color = AppColors.signal,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        Spacer(modifier = Modifier.width(14.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.SemiBold
+            )
+            Spacer(modifier = Modifier.height(3.dp))
+            Text(
+                text = body,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                lineHeight = 20.sp
+            )
+        }
+    }
 }
 
 @Composable
@@ -263,11 +343,7 @@ fun SocialLinksSection(
             Button(
                 onClick = { com.mif.mahmoudcv.util.openEmailClient(profileInfo.email) },
                 modifier = Modifier.weight(1f).height(48.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = com.mif.mahmoudcv.theme.Primary,
-                    contentColor = Color.White
-                )
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Icon(Icons.Default.Email, contentDescription = null, modifier = Modifier.size(18.dp))
                 Spacer(modifier = Modifier.width(8.dp))
@@ -332,11 +408,7 @@ fun ClosingContactSection(
             Button(
                 onClick = { com.mif.mahmoudcv.util.openEmailClient(profileInfo.email) },
                 modifier = Modifier.weight(1f).height(48.dp),
-                shape = RoundedCornerShape(8.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = com.mif.mahmoudcv.theme.Primary,
-                    contentColor = Color.White
-                )
+                shape = RoundedCornerShape(8.dp)
             ) {
                 Icon(Icons.Default.Email, contentDescription = null, modifier = Modifier.size(18.dp))
                 Spacer(modifier = Modifier.width(8.dp))
@@ -400,12 +472,21 @@ fun LanguagesSection(
     languages: List<Language>,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
-        languages.forEach { language ->
-            LanguageBadge(language = language, modifier = Modifier.weight(1f))
+    Column(modifier = modifier.fillMaxWidth()) {
+        Text(
+            text = Strings.sectionLanguages(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            languages.forEach { language ->
+                LanguageBadge(language = language, modifier = Modifier.weight(1f))
+            }
         }
     }
 }
@@ -422,7 +503,7 @@ private fun LanguageBadge(language: Language, modifier: Modifier = Modifier) {
         Icon(
             imageVector = Icons.Outlined.Language,
             contentDescription = null,
-            tint = MaterialTheme.colorScheme.primary,
+            tint = AppColors.signal,
             modifier = Modifier.size(16.dp)
         )
         Spacer(modifier = Modifier.width(8.dp))

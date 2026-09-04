@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,17 +19,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.CvDataProvider
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.presentation.components.BioSection
 import com.mif.mahmoudcv.presentation.components.CardContainer
 import com.mif.mahmoudcv.presentation.components.ClosingContactSection
+import com.mif.mahmoudcv.presentation.components.DeliveryPathSection
 import com.mif.mahmoudcv.presentation.components.LanguagesSection
 import com.mif.mahmoudcv.presentation.components.ProfileHeader
+import com.mif.mahmoudcv.presentation.components.SectionTitle
 import com.mif.mahmoudcv.presentation.components.SettingsBottomSheet
 import com.mif.mahmoudcv.presentation.components.SettingsButton
 import com.mif.mahmoudcv.presentation.components.SocialLinksSection
@@ -51,11 +52,9 @@ fun AboutScreen(modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = Strings.navAbout(),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontWeight = FontWeight.SemiBold,
+                SectionTitle(
+                    title = Strings.navAbout(),
+                    icon = Icons.Outlined.Person,
                     modifier = Modifier.weight(1f)
                 )
                 SettingsButton(onClick = { showSettings = true })
@@ -66,9 +65,11 @@ fun AboutScreen(modifier: Modifier = Modifier) {
             SocialLinksSection(profileInfo = profileInfo)
             Spacer(modifier = Modifier.height(28.dp))
             CardContainer {
-                BioSection(bio = profileInfo.bio)
+                BioSection()
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(28.dp))
+            DeliveryPathSection()
+            Spacer(modifier = Modifier.height(24.dp))
             LanguagesSection(languages = profileInfo.languages)
             Spacer(modifier = Modifier.height(28.dp))
             ClosingContactSection(profileInfo = profileInfo)

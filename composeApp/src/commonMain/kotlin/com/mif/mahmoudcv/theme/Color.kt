@@ -7,6 +7,18 @@ val Primary: Color = Color(0xFF155EEF)
 val PrimaryDark: Color = Color(0xFF004EEB)
 val PrimaryLight: Color = Color(0xFF175CD3)
 
+// The action colour never changes between themes. It is the fill behind white
+// content on the primary Email button, where it reads 5.4:1 on either canvas.
+val ActionBlue: Color = Color(0xFF155EEF)
+val OnActionBlue: Color = Color(0xFFFFFFFF)
+
+// The signal colour is the same blue in light, and lifts in dark. It is used
+// for anything blue that is *drawn as ink* rather than filled: icons, links,
+// the role line, selected navigation, tag text, borders. #155EEF as ink on the
+// dark canvas is 3.46:1 and fails; #84ADFF is 8.38:1 and passes.
+val SignalBlueLight: Color = Color(0xFF155EEF)
+val SignalBlueDark: Color = Color(0xFF84ADFF)
+
 val Accent: Color = Color(0xFF344054)
 val AccentLight: Color = Color(0xFF667085)
 
@@ -27,11 +39,6 @@ val LightCardBorder: Color = Color(0xFFD0D5DD)
 val LightTextPrimary: Color = Color(0xFF101828)
 val LightTextSecondary: Color = Color(0xFF344054)
 val LightTextMuted: Color = Color(0xFF667085)
-
-val GradientPrimaryStart: Color = Primary
-val GradientPrimaryEnd: Color = Primary
-val GradientAccentStart: Color = Accent
-val GradientAccentEnd: Color = Accent
 
 val Success: Color = Color(0xFF17B26A)
 val Error: Color = Color(0xFFD92D20)

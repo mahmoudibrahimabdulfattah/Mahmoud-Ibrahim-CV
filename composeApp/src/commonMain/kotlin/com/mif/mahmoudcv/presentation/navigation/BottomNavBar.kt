@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.mif.mahmoudcv.theme.AppColors
 import com.mif.mahmoudcv.util.AppPlatform
 import com.mif.mahmoudcv.util.currentPlatform
 
@@ -79,8 +80,8 @@ private fun MaterialBottomBar(
                 },
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.primary,
-                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                    selectedIconColor = AppColors.signal,
+                    selectedTextColor = AppColors.signal,
                     indicatorColor = MaterialTheme.colorScheme.primaryContainer,
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -108,7 +109,7 @@ private fun IosTabBar(
                 Screen.bottomNavItems.forEach { screen ->
                     val selected = currentRoute == screen.route
                     val localizedTitle = screen.getLocalizedTitle()
-                    val color = if (selected) MaterialTheme.colorScheme.primary
+                    val color = if (selected) AppColors.signal
                     else MaterialTheme.colorScheme.onSurfaceVariant
 
                     Column(
@@ -152,7 +153,7 @@ fun AppNavigationRail(
         header = {
             Text(
                 text = "MK",
-                color = MaterialTheme.colorScheme.primary,
+                color = AppColors.signal,
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.ExtraBold,
                 modifier = Modifier.padding(vertical = 20.dp)

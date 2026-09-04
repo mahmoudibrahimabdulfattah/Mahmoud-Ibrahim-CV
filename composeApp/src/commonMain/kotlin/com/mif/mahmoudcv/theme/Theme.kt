@@ -5,11 +5,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF84ADFF),
-    onPrimary = Color(0xFF00359E),
+    primary = ActionBlue,
+    onPrimary = OnActionBlue,
     primaryContainer = Color(0xFF173B75),
     onPrimaryContainer = Color(0xFFDCE8FF),
     secondary = Color(0xFFC8D1E0),
@@ -37,8 +40,8 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Primary,
-    onPrimary = Color.White,
+    primary = ActionBlue,
+    onPrimary = OnActionBlue,
     primaryContainer = Color(0xFFEFF4FF),
     onPrimaryContainer = Color(0xFF1849A9),
     secondary = Accent,
@@ -65,6 +68,14 @@ private val LightColorScheme = lightColorScheme(
     scrim = Color.Black.copy(alpha = 0.1f)
 )
 
+private val LocalSignalBlue = staticCompositionLocalOf { SignalBlueLight }
+
+object AppColors {
+    /** Blue used as ink: icons, links, the role line, selected navigation, tags. */
+    val signal: Color
+        @Composable @ReadOnlyComposable get() = LocalSignalBlue.current
+}
+
 @Composable
 fun MahmoudIbrahimTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -78,9 +89,13 @@ fun MahmoudIbrahimTheme(
         navigationBarColor = colorScheme.surface,
         isDarkTheme = darkTheme
     )
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    CompositionLocalProvider(
+        LocalSignalBlue provides if (darkTheme) SignalBlueDark else SignalBlueLight
+    ) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
 }

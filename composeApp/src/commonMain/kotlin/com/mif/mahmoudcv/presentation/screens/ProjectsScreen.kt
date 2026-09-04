@@ -28,6 +28,7 @@ import com.mif.mahmoudcv.data.CvDataProvider
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.presentation.components.ProjectCard
 import com.mif.mahmoudcv.presentation.components.SectionTitle
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
 fun ProjectsScreen(
@@ -53,7 +54,7 @@ fun ProjectsScreen(
             Text(
                 text = Strings.featuredProjects(),
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary,
+                color = AppColors.signal,
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(top = 8.dp, bottom = 2.dp)
             )

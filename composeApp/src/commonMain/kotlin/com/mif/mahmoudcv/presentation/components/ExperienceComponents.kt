@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Experience
 import com.mif.mahmoudcv.domain.model.JobType
+import com.mif.mahmoudcv.theme.AppColors
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -67,7 +68,7 @@ fun ExperienceCard(
                 Text(
                     text = experience.company,
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = AppColors.signal,
                     textDecoration = TextDecoration.None,
                     modifier = Modifier.clickable {
                         uriHandler.openUri(experience.companyUrl)
@@ -77,7 +78,7 @@ fun ExperienceCard(
                 Text(
                     text = experience.company,
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary
+                    color = AppColors.signal
                 )
             }
             LocationTag(location = experience.location)
@@ -148,7 +149,7 @@ private fun ResponsibilityItem(
                 .padding(top = 8.dp)
                 .size(6.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
+                .background(AppColors.signal)
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(

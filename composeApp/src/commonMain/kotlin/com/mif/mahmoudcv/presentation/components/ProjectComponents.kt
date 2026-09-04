@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Project
 import com.mif.mahmoudcv.domain.model.ProjectPlatform
+import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
 fun ProjectCard(project: Project, modifier: Modifier = Modifier) {
@@ -80,7 +81,7 @@ fun ProjectCard(project: Project, modifier: Modifier = Modifier) {
         Text(
             text = project.technologies.joinToString(" · "),
             style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.primary,
+            color = AppColors.signal,
             fontWeight = FontWeight.Medium,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis

@@ -18,7 +18,7 @@ object Strings {
     fun profileBio(years: Int): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "مهندس برمجيات أول لتطبيقات الجوال بخبرة تزيد عن $years سنوات في بناء تطبيقات الجوال الأصلية — Android باستخدام Kotlin و Jetpack Compose، و iOS باستخدام Swift و SwiftUI. أقود مشاريع تطوير الجوال وأتعاون مع فرق متعددة التخصصات وأسلم تطبيقات عالية الأداء وقابلة للتوسع يستخدمها ملايين المستخدمين."
+            "مهندس برمجيات أول لتطبيقات الجوال بخبرة تزيد عن $years سنوات في بناء تطبيقات الجوال الأصلية — Android باستخدام Kotlin و Jetpack\u00A0Compose، و iOS باستخدام Swift و SwiftUI. أقود مشاريع تطوير الجوال وأتعاون مع فرق متعددة التخصصات وأسلم تطبيقات عالية الأداء وقابلة للتوسع يستخدمها ملايين المستخدمين."
         } else {
             "Senior Mobile Engineer with $years+ years of experience building native mobile applications — Android with Kotlin & Jetpack Compose, and iOS with Swift & SwiftUI. Skilled in leading mobile development projects, collaborating with cross-functional teams, and delivering high-performance, scalable applications used by millions of users."
         }
@@ -38,9 +38,109 @@ object Strings {
     fun marketingPromise(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أحول تصميمات Figma وواجهات API إلى تطبيقات آمنة وقابلة للتوسع وجاهزة للإطلاق على Android و iOS أو باستخدام Kotlin Multiplatform."
+            "أحول تصميمات Figma وواجهات API إلى تطبيقات آمنة وقابلة للتوسع وجاهزة للإطلاق على Android و iOS أو باستخدام Kotlin\u00A0Multiplatform."
         } else {
             "Give me your Figma designs and APIs, and I'll turn them into scalable, secure, production-ready apps for Android, iOS, or Kotlin Multiplatform."
+        }
+    }
+
+    @Composable
+    fun aboutHeading(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "مهندس تطبيقات يرى ما هو أبعد من الشاشة."
+        } else {
+            "A mobile engineer who works beyond the screen."
+        }
+    }
+
+    @Composable
+    fun aboutBody(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "أتعاون مع فرق المنتج والتصميم و backend وضمان الجودة لتحويل المتطلبات إلى إصدارات موثوقة، لا إلى واجهات مكتملة فقط. تشمل خبرتي منتجات استهلاكية يستخدمها الملايين، وأدوات مؤسسية، وقواعد Kotlin مشتركة عبر المنصات."
+        } else {
+            "I collaborate with product, design, backend, and QA teams to turn requirements into reliable releases, not just finished UI tickets. My work spans consumer products used by millions, enterprise tools, and shared Kotlin codebases across platforms."
+        }
+    }
+
+    @Composable
+    fun processHeading(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "من المتطلبات إلى الإطلاق"
+        } else {
+            "From handoff to launch"
+        }
+    }
+
+    @Composable
+    fun processLede(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "مسار تسليم واضح للعميل، تدعمه قرارات هندسية بخبرة عملية."
+        } else {
+            "A straightforward delivery path for clients, backed by senior engineering decisions."
+        }
+    }
+
+    @Composable
+    fun processStep1Title(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "شارك تفاصيل المنتج"
+        } else {
+            "Share the product"
+        }
+    }
+
+    @Composable
+    fun processStep1Body(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "الأهداف والمتطلبات والتصميمات وواجهات API."
+        } else {
+            "Share your goals, requirements, designs, and APIs."
+        }
+    }
+
+    @Composable
+    fun processStep2Title(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "أبني التطبيق المناسب"
+        } else {
+            "Build the right app"
+        }
+    }
+
+    @Composable
+    fun processStep2Body(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "بنية صحيحة وتنفيذ واضح وتقدم يمكن متابعته."
+        } else {
+            "Architecture, implementation, and clear progress."
+        }
+    }
+
+    @Composable
+    fun processStep3Title(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "استعد للإطلاق"
+        } else {
+            "Prepare to ship"
+        }
+    }
+
+    @Composable
+    fun processStep3Body(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "جودة وأداء وإصدار وتسليم منظم."
+        } else {
+            "Quality, performance, release, and handover."
         }
     }
 
@@ -79,7 +179,7 @@ object Strings {
     @Composable
     fun proofDownloads(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "WeightWatchers على Google Play" else "WeightWatchers on Google Play"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "WeightWatchers على Google\u00A0Play" else "WeightWatchers on Google Play"
     }
 
     @Composable
@@ -114,7 +214,7 @@ object Strings {
     @Composable
     fun profileTitle(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس برمجيات أول لتطبيقات الجوال — Android · iOS · KMP" else "Senior Mobile Engineer — Android · iOS · KMP"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس برمجيات أول لتطبيقات الجوال — Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP" else "Senior Mobile Engineer — Android · iOS · KMP"
     }
 
     @Composable
@@ -169,7 +269,7 @@ object Strings {
     fun exp0Resp2(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أسلم ميزات على المنصتين باستخدام Android (Kotlin, Jetpack Compose) و iOS (Swift, SwiftUI)."
+            "أسلم ميزات على المنصتين باستخدام Android (Kotlin, Jetpack\u00A0Compose) و iOS (Swift, SwiftUI)."
         } else {
             "Ship features on both platforms: Kotlin and Jetpack Compose on Android, Swift and SwiftUI on iOS."
         }
@@ -179,7 +279,7 @@ object Strings {
     fun exp0Resp3(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أحافظ على اتساق البنية بين قاعدتي الكود باستخدام Clean Architecture و MVVM/MVI."
+            "أحافظ على اتساق البنية بين قاعدتي الكود باستخدام Clean\u00A0Architecture و MVVM/MVI."
         } else {
             "Keep architecture consistent across both codebases with Clean Architecture and MVVM/MVI."
         }
@@ -232,7 +332,7 @@ object Strings {
     fun exp1Resp2(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أطلقت ميزات ومسارات واجهة جديدة باستخدام Kotlin و Jetpack Compose لتجربة تتبع الطعام والنشاط."
+            "أطلقت ميزات ومسارات واجهة جديدة باستخدام Kotlin و Jetpack\u00A0Compose لتجربة تتبع الطعام والنشاط."
         } else {
             "Shipped new features and UI flows in Kotlin and Jetpack Compose for the food and activity tracking experience."
         }
@@ -252,7 +352,7 @@ object Strings {
     fun exp1Resp4(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "عملت ضمن Clean Architecture و MVI/MVVM، وأضفت اختبارات وحدات وواجهات ساهمت في خفض معدل الأعطال."
+            "عملت ضمن Clean\u00A0Architecture و MVI/MVVM، وأضفت اختبارات وحدات وواجهات ساهمت في خفض معدل الأعطال."
         } else {
             "Worked within Clean Architecture and MVI/MVVM, adding unit and UI tests that brought the crash rate down."
         }
@@ -268,7 +368,7 @@ object Strings {
     fun exp2Resp1(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "صممت بنية SGS Super App ودمجت ميزات ذكاء اصطناعي محادثية عبر Labiba SDK."
+            "صممت بنية SGS\u00A0Super\u00A0App ودمجت ميزات ذكاء اصطناعي محادثية عبر Labiba\u00A0SDK."
         } else {
             "Architected the SGS Super App and integrated conversational AI features through the Labiba SDK."
         }
@@ -288,7 +388,7 @@ object Strings {
     fun exp2Resp3(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "طبقت Clean Architecture متعددة الوحدات باستخدام Kotlin Flow، مما خفض تكرار الأخطاء بنسبة 25%."
+            "طبقت Clean\u00A0Architecture متعددة الوحدات باستخدام Kotlin\u00A0Flow، مما خفض تكرار الأخطاء بنسبة 25%."
         } else {
             "Applied multi-module Clean Architecture with Kotlin Flow, reducing bug recurrence by 25%."
         }
@@ -330,7 +430,7 @@ object Strings {
     fun exp3Resp3(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "صممت Clean Architecture متعددة الوحدات وقابلة للتوسع، مما أتاح تسليم الميزات أسرع بنسبة 30%."
+            "صممت Clean\u00A0Architecture متعددة الوحدات وقابلة للتوسع، مما أتاح تسليم الميزات أسرع بنسبة 30%."
         } else {
             "Architected scalable multi-module Clean Architecture, enabling 30% faster feature delivery."
         }
@@ -372,7 +472,7 @@ object Strings {
     fun exp4Resp2(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "توليت تطبيق Smart Sales من البداية إلى النهاية، وعالجت أخطاء حرجة وحسنت رضا المستخدمين."
+            "توليت تطبيق Smart\u00A0Sales من البداية إلى النهاية، وعالجت أخطاء حرجة وحسنت رضا المستخدمين."
         } else {
             "Owned the Smart Sales app end to end, resolving critical bugs and improving user satisfaction."
         }
@@ -382,7 +482,7 @@ object Strings {
     fun exp4Resp3(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "ربطت التطبيقات بأنظمة SAP عبر C# WCF لمزامنة البيانات لحظيا بين المنصات."
+            "ربطت التطبيقات بأنظمة SAP عبر C#\u00A0WCF لمزامنة البيانات لحظيا بين المنصات."
         } else {
             "Integrated apps with SAP systems through C# WCF for real-time cross-platform data sync."
         }
@@ -398,7 +498,7 @@ object Strings {
     fun exp5Resp1(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطوير تطبيق WE Home (My WE) باستخدام Java و Android SDK و Retrofit2 و Material Design."
+            "تطوير تطبيق WE\u00A0Home (My\u00A0WE) باستخدام Java و Android\u00A0SDK و Retrofit2 و Material\u00A0Design."
         } else {
             "Developed WE Home (My WE) application using Java, Android SDK, Retrofit2, and Material Design."
         }
@@ -408,7 +508,7 @@ object Strings {
     fun exp5Resp2(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "إعادة بناء تطبيق 3AL-MASHY باستخدام Java و SQLite و list view و Google Maps."
+            "إعادة بناء تطبيق 3AL-MASHY باستخدام Java و SQLite و list\u00A0view و Google\u00A0Maps."
         } else {
             "Re-Built 3AL-MASHY application using Java, SQLite, list view, and Google Maps."
         }
@@ -418,7 +518,7 @@ object Strings {
     fun exp5Resp3(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "القدرة على العمل مع REST APIs وخدمات Google (Google Maps و Firebase)."
+            "القدرة على العمل مع REST\u00A0APIs وخدمات Google (Google\u00A0Maps و Firebase)."
         } else {
             "Able to work with REST APIs and Google Services (Google Maps & Firebase)."
         }
@@ -486,7 +586,7 @@ object Strings {
     fun projSgsSuperApp(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "خدمة ذاتية للموظفين مدعومة بالذكاء الاصطناعي لصالح Saudi Ground Services."
+            "خدمة ذاتية للموظفين مدعومة بالذكاء الاصطناعي لصالح Saudi\u00A0Ground\u00A0Services."
         } else {
             "AI-enhanced employee self-service for Saudi Ground Services."
         }
@@ -496,7 +596,7 @@ object Strings {
     fun projNewsShorts(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق أخبار مبني باستخدام Kotlin Multiplatform، بتصفح عمودي وبنية offline-first."
+            "تطبيق أخبار مبني باستخدام Kotlin\u00A0Multiplatform، بتصفح عمودي وبنية offline-first."
         } else {
             "Kotlin Multiplatform news app with TikTok-style vertical browsing and offline-first architecture."
         }
@@ -516,7 +616,7 @@ object Strings {
     fun projWeAttend(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "إدارة حضور لأكثر من 2,000 موظف في Telecom Egypt."
+            "إدارة حضور لأكثر من 2,000 موظف في Telecom\u00A0Egypt."
         } else {
             "Attendance management for 2,000+ Telecom Egypt employees."
         }
@@ -536,7 +636,7 @@ object Strings {
     fun projInteractiveCv(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "سيرة تفاعلية واحدة عبر أربع منصات باستخدام Compose Multiplatform، مع العربية ودعم RTL."
+            "سيرة تفاعلية واحدة عبر أربع منصات باستخدام Compose\u00A0Multiplatform، مع العربية ودعم RTL."
         } else {
             "One Compose Multiplatform CV across four platforms, with Arabic and RTL."
         }
@@ -556,7 +656,7 @@ object Strings {
     fun projDataCleansing(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "توثيق ميداني لكبائن الشبكات لفنيي Telecom Egypt."
+            "توثيق ميداني لكبائن الشبكات لفنيي Telecom\u00A0Egypt."
         } else {
             "Field documentation of network cabinets for Telecom Egypt technicians."
         }
