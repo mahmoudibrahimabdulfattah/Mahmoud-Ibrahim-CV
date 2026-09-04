@@ -18,7 +18,7 @@ object Strings {
     fun profileBio(years: Int): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "مهندس موبايل أول بخبرة تزيد عن $years سنوات في بناء تطبيقات الهاتف الأصلية — اندرويد باستخدام Kotlin و Jetpack Compose، و iOS باستخدام Swift و SwiftUI. متمكن من قيادة مشاريع تطوير الهاتف المحمول والتعاون مع فرق متعددة التخصصات وتقديم تطبيقات عالية الأداء وقابلة للتوسع يستخدمها ملايين المستخدمين."
+            "مهندس برمجيات أول لتطبيقات الجوال بخبرة تزيد عن $years سنوات في بناء تطبيقات الجوال الأصلية — Android باستخدام Kotlin و Jetpack Compose، و iOS باستخدام Swift و SwiftUI. أقود مشاريع تطوير الجوال وأتعاون مع فرق متعددة التخصصات وأسلم تطبيقات عالية الأداء وقابلة للتوسع يستخدمها ملايين المستخدمين."
         } else {
             "Senior Mobile Engineer with $years+ years of experience building native mobile applications — Android with Kotlin & Jetpack Compose, and iOS with Swift & SwiftUI. Skilled in leading mobile development projects, collaborating with cross-functional teams, and delivering high-performance, scalable applications used by millions of users."
         }
@@ -428,7 +428,7 @@ object Strings {
     fun exp5Resp4(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "بناء 3 تطبيقات اندرويد خلال فترة التدريب."
+            "بناء 3 تطبيقات Android خلال فترة التدريب."
         } else {
             "Built 3 Android apps during the internship."
         }
