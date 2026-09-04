@@ -5,8 +5,10 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,12 +27,12 @@ import androidx.compose.material.icons.outlined.WorkHistory
 import androidx.compose.material.icons.outlined.Download as DownloadOutlined
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,6 +42,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -120,14 +123,38 @@ fun ProfileHeader(
 
 @Composable
 private fun ProofRow(years: Int) {
-    Column(modifier = Modifier.fillMaxWidth()) {
-        ProofItem(Icons.Outlined.WorkHistory, ltr("$years+"), Strings.proofYears())
-        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        ProofItem(Icons.Outlined.Devices, ltr("Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP"), Strings.proofPlatforms())
-        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        ProofItem(Icons.Outlined.DownloadOutlined, ltr("10M+"), Strings.proofDownloads())
-        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        ProofItem(Icons.Outlined.RocketLaunch, ltr("7+"), Strings.proofApps())
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        ProofPair(
+            left = { ProofItem(Icons.Outlined.WorkHistory, ltr("$years+"), Strings.proofYears()) },
+            right = { ProofItem(Icons.Outlined.Devices, ltr("Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP"), Strings.proofPlatforms()) }
+        )
+        ProofPair(
+            left = { ProofItem(Icons.Outlined.DownloadOutlined, ltr("10M+"), Strings.proofDownloads()) },
+            right = { ProofItem(Icons.Outlined.RocketLaunch, ltr("7+"), Strings.proofApps()) }
+        )
+    }
+}
+
+@Composable
+private fun ProofPair(
+    left: @Composable () -> Unit,
+    right: @Composable () -> Unit
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) { left() }
+        // The only rule in the block. No outer border and no horizontal dividers -- the
+        // four facts stand on the page, separated by one mark, not boxed into a table.
+        VerticalDivider(
+            modifier = Modifier.fillMaxHeight(),
+            color = MaterialTheme.colorScheme.outlineVariant
+        )
+        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) { right() }
     }
 }
 
@@ -141,31 +168,34 @@ private fun ltr(value: String): String = "\u2066$value\u2069"
 
 @Composable
 private fun ProofItem(icon: ImageVector, value: String, label: String) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = Modifier.padding(horizontal = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = AppColors.signal,
-            modifier = Modifier.size(20.dp)
-        )
-        Spacer(modifier = Modifier.width(14.dp))
-        Column(modifier = Modifier.weight(1f)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = AppColors.signal,
+                modifier = Modifier.size(18.dp)
+            )
+            Spacer(modifier = Modifier.width(7.dp))
             Text(
                 text = value,
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                fontWeight = FontWeight.Bold,
+                maxLines = 1
             )
         }
+        Spacer(modifier = Modifier.height(3.dp))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            maxLines = 2
+        )
     }
 }
 

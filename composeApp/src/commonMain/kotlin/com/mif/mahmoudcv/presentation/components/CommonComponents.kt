@@ -130,27 +130,20 @@ fun TechChip(
     isExpert: Boolean = false,
     isSoft: Boolean = false
 ) {
-    val backgroundColor: Color = when {
-        isExpert -> MaterialTheme.colorScheme.primary
-        isSoft -> MaterialTheme.colorScheme.secondaryContainer
-        else -> MaterialTheme.colorScheme.primaryContainer
-    }
-    val textColor: Color = when {
-        isExpert -> MaterialTheme.colorScheme.onPrimary
-        isSoft -> MaterialTheme.colorScheme.onSecondaryContainer
-        else -> MaterialTheme.colorScheme.onPrimaryContainer
-    }
+    val borderColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.outlineVariant
+    val textColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.onSurfaceVariant
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(6.dp))
-            .background(backgroundColor)
+            .clip(RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.surface)
+            .border(1.dp, borderColor, RoundedCornerShape(8.dp))
             .padding(horizontal = 10.dp, vertical = 6.dp)
     ) {
         Text(
             text = text,
             color = textColor,
             fontSize = 12.sp,
-            fontWeight = FontWeight.Medium
+            fontWeight = if (isExpert) FontWeight.SemiBold else FontWeight.Medium
         )
     }
 }
@@ -162,14 +155,12 @@ fun SkillPill(
     isExpert: Boolean = false,
     isSoft: Boolean = false
 ) {
-    // The chip sits on a `surfaceVariant` card, so it cannot use `surfaceVariant`
-    // as its own fill -- that was the bug. A one-pixel outline over the card
-    // reads at every theme and keeps the group flat, per the Flat-by-Default rule.
     val borderColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.outlineVariant
     val textColor: Color = if (isExpert) AppColors.signal else MaterialTheme.colorScheme.onSurfaceVariant
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.surface)
             .border(1.dp, borderColor, RoundedCornerShape(8.dp))
             .padding(horizontal = 12.dp, vertical = 7.dp)
     ) {
@@ -194,6 +185,7 @@ fun CardContainer(
         .fillMaxWidth()
         .clip(RoundedCornerShape(12.dp))
         .background(MaterialTheme.colorScheme.surfaceVariant)
+        .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(12.dp))
     if (onClick != null) {
         Surface(
             modifier = cardModifier,
