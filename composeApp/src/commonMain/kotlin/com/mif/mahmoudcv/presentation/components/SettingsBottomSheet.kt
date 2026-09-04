@@ -36,7 +36,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -47,7 +46,6 @@ import com.mif.mahmoudcv.data.LocalSettingsManager
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.theme.Accent
 import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
 
 @Composable
 fun SettingsButton(
@@ -56,16 +54,9 @@ fun SettingsButton(
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier
-            .size(48.dp)
-            .shadow(
-                elevation = 8.dp,
-                shape = CircleShape,
-                spotColor = Primary.copy(alpha = 0.3f)
-            ),
+        modifier = modifier.size(48.dp),
         shape = CircleShape,
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        border = ButtonDefaults.outlinedButtonBorder(enabled = true)
+        color = Color.Transparent
     ) {
         Box(
             contentAlignment = Alignment.Center,
@@ -74,8 +65,8 @@ fun SettingsButton(
             Icon(
                 imageVector = Icons.Default.Settings,
                 contentDescription = Strings.settings(),
-                tint = PrimaryLight,
-                modifier = Modifier.size(24.dp)
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(22.dp)
             )
         }
     }
@@ -175,7 +166,7 @@ private fun SettingsSection(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = PrimaryLight,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(22.dp)
             )
             Spacer(modifier = Modifier.width(10.dp))

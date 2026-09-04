@@ -3,6 +3,8 @@ package com.mif.mahmoudcv.util
 import java.awt.Desktop
 import java.net.URI
 
+actual fun currentPlatform(): AppPlatform = AppPlatform.DESKTOP
+
 actual fun openUrl(url: String) {
     if (Desktop.isDesktopSupported()) {
         Desktop.getDesktop().browse(URI(url))
@@ -20,7 +22,6 @@ actual fun openEmailClient(email: String) {
         Desktop.getDesktop().mail(URI("mailto:$email"))
     }
 }
-
 
 
 

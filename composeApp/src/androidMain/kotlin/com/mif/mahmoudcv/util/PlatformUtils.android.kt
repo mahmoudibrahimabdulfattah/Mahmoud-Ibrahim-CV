@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import com.mif.mahmoudcv.ContextProvider
 
+actual fun currentPlatform(): AppPlatform = AppPlatform.ANDROID
+
 actual fun openUrl(url: String) {
     val context = ContextProvider.context
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -25,7 +27,6 @@ actual fun openEmailClient(email: String) {
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     context.startActivity(intent)
 }
-
 
 
 

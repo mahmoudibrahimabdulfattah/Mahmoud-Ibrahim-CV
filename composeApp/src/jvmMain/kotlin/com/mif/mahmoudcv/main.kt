@@ -13,7 +13,7 @@ fun main(): Unit = application {
         title = "Mahmoud Ibrahim - CV",
         state = WindowState(
             placement = WindowPlacement.Floating,
-            size = DpSize(420.dp, 900.dp)
+            size = DpSize(1200.dp, 820.dp)
         )
     ) {
         App()

@@ -31,9 +31,6 @@ import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.Strings
 import com.mif.mahmoudcv.domain.model.Certificate
 import com.mif.mahmoudcv.domain.model.Education
-import com.mif.mahmoudcv.theme.Accent
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
 
 @Composable
 fun EducationCard(
@@ -58,7 +55,7 @@ fun EducationCard(
                 Text(
                     text = education.university,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryLight,
+                    color = MaterialTheme.colorScheme.primary,
                     modifier = if (education.universityUrl != null) {
                         Modifier.clickable {
                             uriHandler.openUri(education.universityUrl)
@@ -93,8 +90,8 @@ private fun EducationBadge(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(Primary.copy(alpha = 0.1f))
-            .border(1.dp, Primary.copy(alpha = 0.2f), RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.32f), RoundedCornerShape(8.dp))
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -102,13 +99,13 @@ private fun EducationBadge(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = Accent,
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(18.dp)
         )
         Text(
             text = text,
             style = MaterialTheme.typography.bodyMedium,
-            color = PrimaryLight,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
             fontWeight = FontWeight.Medium
         )
     }
@@ -132,7 +129,7 @@ fun CertificateCard(
         Icon(
             imageVector = Icons.Default.WorkspacePremium,
             contentDescription = null,
-            tint = Accent,
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(32.dp)
         )
         Column(modifier = Modifier.weight(1f)) {
@@ -166,4 +163,3 @@ fun CertificatesGrid(
         }
     }
 }
-

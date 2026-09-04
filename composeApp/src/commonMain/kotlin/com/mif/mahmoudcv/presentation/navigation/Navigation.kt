@@ -51,7 +51,7 @@ sealed class Screen(
     )
 
     companion object {
-        val bottomNavItems: List<Screen> = listOf(About, Experience, Skills, Projects, Education)
+        val bottomNavItems: List<Screen> = listOf(About, Projects, Experience, Skills, Education)
     }
 }
 

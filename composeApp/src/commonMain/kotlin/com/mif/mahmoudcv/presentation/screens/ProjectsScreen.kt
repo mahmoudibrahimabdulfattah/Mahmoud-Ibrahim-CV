@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Rocket
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -20,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.CvDataProvider
 import com.mif.mahmoudcv.data.Strings
@@ -38,12 +41,21 @@ fun ProjectsScreen(
             .fillMaxSize()
             .padding(horizontal = 20.dp),
         contentPadding = PaddingValues(top = 24.dp, bottom = 100.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(0.dp)
     ) {
         item {
             SectionTitle(
                 title = Strings.sectionProjects(),
                 icon = Icons.Default.Rocket
+            )
+        }
+        item {
+            Text(
+                text = Strings.featuredProjects(),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(top = 8.dp, bottom = 2.dp)
             )
         }
         itemsIndexed(
@@ -86,4 +98,3 @@ fun ProjectsScreen(
         }
     }
 }
-

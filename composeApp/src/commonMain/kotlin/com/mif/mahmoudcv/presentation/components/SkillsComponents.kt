@@ -27,7 +27,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.domain.model.SkillCategory
 import com.mif.mahmoudcv.domain.model.SkillLevel
-import com.mif.mahmoudcv.theme.PrimaryLight
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -43,7 +42,7 @@ fun SkillCategoryCard(
             Icon(
                 imageVector = getSkillCategoryIcon(skillCategory.icon),
                 contentDescription = null,
-                tint = PrimaryLight,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(24.dp)
             )
             Text(
@@ -96,7 +95,6 @@ fun SkillsOverview(
         }
     }
 }
-
 
 
 

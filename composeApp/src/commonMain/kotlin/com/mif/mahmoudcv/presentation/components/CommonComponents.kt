@@ -1,7 +1,6 @@
 package com.mif.mahmoudcv.presentation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
@@ -16,6 +15,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,42 +25,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mif.mahmoudcv.theme.Accent
 import com.mif.mahmoudcv.theme.DateTextStyle
-import com.mif.mahmoudcv.theme.Primary
-import com.mif.mahmoudcv.theme.PrimaryLight
 
 @Composable
 fun GradientBackground(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit
 ) {
-    val primaryColor: Color = Primary.copy(alpha = 0.15f)
-    val accentColor: Color = Accent.copy(alpha = 0.08f)
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(
-                brush = Brush.radialGradient(
-                    colors = listOf(primaryColor, Color.Transparent),
-                    center = Offset(0.2f, 0.3f),
-                    radius = 1000f
-                )
-            )
-            .background(
-                brush = Brush.radialGradient(
-                    colors = listOf(accentColor, Color.Transparent),
-                    center = Offset(0.8f, 0.7f),
-                    radius = 800f
-                )
-            ),
+            .background(MaterialTheme.colorScheme.background),
         content = content
     )
 }
@@ -77,7 +58,7 @@ fun SectionTitle(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = PrimaryLight,
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(28.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))
@@ -93,11 +74,7 @@ fun SectionTitle(
                     .width(60.dp)
                     .height(4.dp)
                     .clip(RoundedCornerShape(2.dp))
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(Primary, PrimaryLight)
-                        )
-                    )
+                    .background(MaterialTheme.colorScheme.primary)
             )
         }
     }
@@ -110,17 +87,13 @@ fun PrimaryBadge(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(50))
-            .background(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(Primary, PrimaryLight)
-                )
-            )
+            .clip(RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.primary)
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onPrimary,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -134,14 +107,13 @@ fun AccentBadge(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(50))
-            .background(Accent.copy(alpha = 0.15f))
-            .border(1.dp, Accent.copy(alpha = 0.3f), RoundedCornerShape(50))
+            .clip(RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(horizontal = 12.dp, vertical = 6.dp)
     ) {
         Text(
             text = text,
-            color = Accent,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -155,29 +127,20 @@ fun TechChip(
     isExpert: Boolean = false,
     isSoft: Boolean = false
 ) {
-    val backgroundColor: Brush = when {
-        isExpert -> Brush.horizontalGradient(listOf(Primary, PrimaryLight))
-        isSoft -> Brush.horizontalGradient(listOf(Accent.copy(alpha = 0.15f), Accent.copy(alpha = 0.1f)))
-        else -> Brush.horizontalGradient(listOf(Primary.copy(alpha = 0.1f), Primary.copy(alpha = 0.1f)))
+    val backgroundColor: Color = when {
+        isExpert -> MaterialTheme.colorScheme.primary
+        isSoft -> MaterialTheme.colorScheme.secondaryContainer
+        else -> MaterialTheme.colorScheme.primaryContainer
     }
     val textColor: Color = when {
-        isExpert -> Color.White
-        isSoft -> Accent
-        else -> PrimaryLight
-    }
-    val borderColor: Color = when {
-        isExpert -> Color.Transparent
-        isSoft -> Accent.copy(alpha = 0.2f)
-        else -> Primary.copy(alpha = 0.2f)
+        isExpert -> MaterialTheme.colorScheme.onPrimary
+        isSoft -> MaterialTheme.colorScheme.onSecondaryContainer
+        else -> MaterialTheme.colorScheme.onPrimaryContainer
     }
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(6.dp))
-            .background(brush = backgroundColor)
-            .then(
-                if (!isExpert) Modifier.border(1.dp, borderColor, RoundedCornerShape(6.dp))
-                else Modifier
-            )
+            .background(backgroundColor)
             .padding(horizontal = 10.dp, vertical = 6.dp)
     ) {
         Text(
@@ -196,34 +159,20 @@ fun SkillPill(
     isExpert: Boolean = false,
     isSoft: Boolean = false
 ) {
-    val backgroundColor: Brush = when {
-        isExpert -> Brush.horizontalGradient(listOf(Primary, PrimaryLight))
-        isSoft -> Brush.horizontalGradient(listOf(Accent.copy(alpha = 0.1f), Accent.copy(alpha = 0.1f)))
-        else -> Brush.horizontalGradient(
-            listOf(
-                MaterialTheme.colorScheme.surfaceVariant,
-                MaterialTheme.colorScheme.surfaceVariant
-            )
-        )
+    val backgroundColor: Color = when {
+        isExpert -> MaterialTheme.colorScheme.primary
+        isSoft -> MaterialTheme.colorScheme.secondaryContainer
+        else -> MaterialTheme.colorScheme.surfaceVariant
     }
     val textColor: Color = when {
-        isExpert -> Color.White
-        isSoft -> Accent
+        isExpert -> MaterialTheme.colorScheme.onPrimary
+        isSoft -> MaterialTheme.colorScheme.onSecondaryContainer
         else -> MaterialTheme.colorScheme.onSurfaceVariant
-    }
-    val borderColor: Color = when {
-        isExpert -> Color.Transparent
-        isSoft -> Accent.copy(alpha = 0.2f)
-        else -> MaterialTheme.colorScheme.outline
     }
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(50))
-            .background(brush = backgroundColor)
-            .then(
-                if (!isExpert) Modifier.border(1.dp, borderColor, RoundedCornerShape(50))
-                else Modifier
-            )
+            .clip(RoundedCornerShape(8.dp))
+            .background(backgroundColor)
             .padding(horizontal = 14.dp, vertical = 8.dp)
     ) {
         Text(
@@ -243,9 +192,8 @@ fun CardContainer(
 ) {
     val cardModifier: Modifier = modifier
         .fillMaxWidth()
-        .clip(RoundedCornerShape(16.dp))
+        .clip(RoundedCornerShape(12.dp))
         .background(MaterialTheme.colorScheme.surfaceVariant)
-        .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(16.dp))
     if (onClick != null) {
         Surface(
             modifier = cardModifier,
@@ -274,9 +222,11 @@ fun LocationTag(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = "📍",
-            fontSize = 12.sp
+        Icon(
+            imageVector = Icons.Outlined.LocationOn,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.size(16.dp)
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
@@ -295,7 +245,7 @@ fun DateBadge(
     Text(
         text = date,
         style = DateTextStyle,
-        color = PrimaryLight,
+        color = MaterialTheme.colorScheme.primary,
         modifier = modifier
     )
 }
@@ -314,7 +264,7 @@ fun BulletPoint(
                 .padding(top = 8.dp)
                 .size(6.dp)
                 .clip(CircleShape)
-                .background(PrimaryLight)
+                .background(MaterialTheme.colorScheme.primary)
         )
         Spacer(modifier = Modifier.width(12.dp))
         Text(
@@ -324,7 +274,4 @@ fun BulletPoint(
         )
     }
 }
-
-
-
 

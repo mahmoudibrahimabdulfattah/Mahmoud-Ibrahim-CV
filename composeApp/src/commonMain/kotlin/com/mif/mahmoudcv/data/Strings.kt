@@ -25,6 +25,64 @@ object Strings {
     }
 
     @Composable
+    fun marketingHeadline(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "أبني تطبيقات موبايل جاهزة للإطلاق."
+        } else {
+            "I build production-ready mobile apps."
+        }
+    }
+
+    @Composable
+    fun marketingPromise(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "أرسل لي تصميمات Figma والـ APIs، وسأسلّمك تطبيق موبايل قابلًا للتوسع باستخدام Kotlin وCompose أو KMP."
+        } else {
+            "Give me your Figma designs and APIs, and I'll deliver a scalable mobile application built with Kotlin and Compose or KMP."
+        }
+    }
+
+    @Composable
+    fun closingContactTitle(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "عندك مشروع موبايل؟"
+        } else {
+            "Have a mobile project in mind?"
+        }
+    }
+
+    @Composable
+    fun closingContactBody(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
+            "أرسل التصميمات والـ APIs أو تفاصيل المنتج، وسأوضح لك أفضل طريقة لبنائه."
+        } else {
+            "Send the designs, APIs, or product context and I’ll outline the right way to build it."
+        }
+    }
+
+    @Composable
+    fun proofYears(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "سنوات خبرة" else "years"
+    }
+
+    @Composable
+    fun proofDownloads(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "تنزيل" else "downloads"
+    }
+
+    @Composable
+    fun proofRating(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "تقييم" else "rating"
+    }
+
+    @Composable
     fun downloadCv(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
@@ -50,7 +108,7 @@ object Strings {
     @Composable
     fun profileTitle(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس موبايل أول — اندرويد و iOS" else "Senior Mobile Engineer — Android & iOS"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس موبايل أول — Android · iOS · KMP" else "Senior Mobile Engineer — Android · iOS · KMP"
     }
 
     @Composable
@@ -645,6 +703,12 @@ object Strings {
     fun featured(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مميز" else "Featured"
+    }
+
+    @Composable
+    fun featuredProjects(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مشاريع مميزة" else "Featured projects"
     }
 
     @Composable
