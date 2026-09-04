@@ -111,7 +111,7 @@ object CvDataProvider {
             ),
             Experience(
                 id = 3,
-                title = Strings.exp1Title(),
+                title = Strings.exp2Title(),
                 company = "iSpace Technology",
                 companyUrl = ISPACE_URL,
                 location = Strings.exp2Location(),
@@ -121,8 +121,7 @@ object CvDataProvider {
                 responsibilities = listOf(
                     Strings.exp2Resp1(),
                     Strings.exp2Resp2(),
-                    Strings.exp2Resp3(),
-                    Strings.exp2Resp4()
+                    Strings.exp2Resp3()
                 ),
                 technologies = listOf("Kotlin", "Jetpack Compose", "Clean Architecture", "MVVM/MVI", "AI/ML")
             ),
@@ -139,8 +138,7 @@ object CvDataProvider {
                     Strings.exp3Resp1(),
                     Strings.exp3Resp2(),
                     Strings.exp3Resp3(),
-                    Strings.exp3Resp4(),
-                    Strings.exp3Resp5()
+                    Strings.exp3Resp4()
                 ),
                 technologies = listOf("Kotlin", "Coroutines", "Flow", "Compose", "Firebase")
             ),
@@ -156,10 +154,9 @@ object CvDataProvider {
                 responsibilities = listOf(
                     Strings.exp4Resp1(),
                     Strings.exp4Resp2(),
-                    Strings.exp4Resp3(),
-                    Strings.exp4Resp4()
+                    Strings.exp4Resp3()
                 ),
-                technologies = listOf("Kotlin", "Flutter", "SAP Integration", "C# WCF")
+                technologies = listOf("Kotlin", "SAP Integration", "C# WCF")
             ),
             Experience(
                 id = 6,
