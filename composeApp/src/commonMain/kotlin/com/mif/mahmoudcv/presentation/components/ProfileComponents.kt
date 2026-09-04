@@ -24,6 +24,7 @@ import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -117,20 +118,33 @@ fun ProfileHeader(
 
 @Composable
 private fun ProofRow(years: Int) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(8.dp))
-            .padding(vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(8.dp)),
+        verticalArrangement = Arrangement.spacedBy(0.dp)
     ) {
-        ProofItem(value = "$years+", label = Strings.proofYears(), modifier = Modifier.weight(1f))
-        ProofDivider()
-        ProofItem(value = "Android · iOS", label = "KMP", modifier = Modifier.weight(1f))
-        ProofDivider()
-        ProofItem(value = "10M+", label = Strings.proofDownloads(), modifier = Modifier.weight(1f))
-        ProofDivider()
-        ProofItem(value = "4.5★", label = Strings.proofRating(), modifier = Modifier.weight(1f))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            ProofItem(value = "$years+", label = Strings.proofYears(), modifier = Modifier.weight(1f))
+            ProofDivider()
+            ProofItem(value = "Android · iOS · KMP", label = Strings.proofPlatforms(), modifier = Modifier.weight(1f))
+        }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            ProofItem(value = "10M+", label = Strings.proofDownloads(), modifier = Modifier.weight(1f))
+            ProofDivider()
+            ProofItem(value = "7+", label = Strings.proofApps(), modifier = Modifier.weight(1f))
+        }
     }
 }
 
@@ -163,7 +177,7 @@ private fun ProofItem(value: String, label: String, modifier: Modifier = Modifie
             text = label,
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 1,
+            maxLines = 2,
             textAlign = TextAlign.Center
         )
     }

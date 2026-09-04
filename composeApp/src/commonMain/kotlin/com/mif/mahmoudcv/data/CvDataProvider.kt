@@ -44,10 +44,10 @@ object CvDataProvider {
     private const val UNIVERSITY_URL: String = "https://www.linkedin.com/school/misr-university-for-science-and-technology/"
     private const val SGS_APP_URL: String = "https://play.google.com/store/apps/details?id=com.ispace.sgs.app"
     private const val WE_ATTEND_URL: String = "https://play.google.com/store/apps/details?id=com.we.weAttend"
-    private const val WE_HR_URL: String = "https://play.google.com/store/search?q=WE%20HR&c=apps"
-    private const val MY_WE_URL: String = "https://play.google.com/store/apps/details?id=com.ucare.we"
-    private const val MOVIE_CATALOG_URL: String = "https://github.com/mahmoudibrahimabdulfattah/MovieCatalogApp"
+    private const val WE_HR_URL: String = "https://play.google.com/store/apps/details?id=com.we.teamcare"
     private const val NEWS_SHORTS_URL: String = "https://github.com/mahmoudibrahimabdulfattah/NewsShortsCMP"
+    private const val SMART_MENTOR_URL: String = "https://play.google.com/store/apps/details?id=com.ispace.mentorship.app"
+    private const val INTERACTIVE_CV_URL: String = "https://github.com/mahmoudibrahimabdulfattah/Mahmoud-Ibrahim-CV"
 
     @Composable
     fun getLocalizedProfileInfo(): ProfileInfo {
@@ -278,76 +278,78 @@ object CvDataProvider {
             Project(
                 id = 1,
                 name = "WeightWatchers",
-                description = Strings.proj1Desc(),
+                description = Strings.projWeightWatchers(),
                 url = WEIGHTWATCHERS_APP_URL,
                 isFeatured = true,
                 platform = ProjectPlatform.PLAY_STORE,
-                technologies = listOf("Kotlin", "Jetpack Compose", "Clean Arch", "Multi-module", "Coroutines")
+                technologies = listOf("Kotlin", "Compose", "Multi-module")
             ),
             Project(
                 id = 2,
                 name = "SGS Super App",
-                description = Strings.proj2Desc(),
+                description = Strings.projSgsSuperApp(),
                 url = SGS_APP_URL,
                 isFeatured = true,
                 platform = ProjectPlatform.PLAY_STORE,
-                technologies = listOf("Kotlin", "Jetpack Compose", "Labiba AI SDK", "Clean Arch", "MVVM")
+                technologies = listOf("Kotlin", "Compose", "AI SDK")
             ),
             Project(
                 id = 3,
-                name = "Mystery Shopper",
-                description = Strings.proj3Desc(),
-                isInternal = true,
-                platform = ProjectPlatform.INTERNAL,
-                technologies = listOf("Kotlin", "Jetpack Compose", "Clean Arch", "MVI", "ROOM", "Hilt")
+                name = "News Shorts",
+                description = Strings.projNewsShorts(),
+                url = NEWS_SHORTS_URL,
+                isFeatured = true,
+                platform = ProjectPlatform.GITHUB,
+                technologies = listOf("KMP", "Offline-first", "Localization")
             ),
             Project(
                 id = 4,
-                name = "Data Cleansing",
-                description = Strings.proj4Desc(),
-                isInternal = true,
-                platform = ProjectPlatform.INTERNAL,
-                technologies = listOf("Kotlin", "Jetpack Compose", "Clean Arch", "MVI", "ROOM")
+                name = "Smart Mentor",
+                description = Strings.projSmartMentor(),
+                url = SMART_MENTOR_URL,
+                isFeatured = true,
+                platform = ProjectPlatform.PLAY_STORE,
+                technologies = listOf("Kotlin", "Compose", "Hilt")
             ),
             Project(
                 id = 5,
                 name = "WE Attend",
-                description = Strings.proj5Desc(),
+                description = Strings.projWeAttend(),
                 url = WE_ATTEND_URL,
                 platform = ProjectPlatform.PLAY_STORE,
-                technologies = listOf("Kotlin", "XML", "MVVM", "Coroutines", "Firebase")
+                technologies = listOf("Kotlin", "MVVM", "Firebase")
             ),
             Project(
                 id = 6,
                 name = "WE HR",
-                description = Strings.proj6Desc(),
+                description = Strings.projWeHr(),
                 url = WE_HR_URL,
                 platform = ProjectPlatform.PLAY_STORE,
-                technologies = listOf("Kotlin", "XML", "MVVM", "Coroutines", "Firebase")
+                technologies = listOf("Kotlin", "MVVM", "Firebase")
             ),
             Project(
                 id = 7,
-                name = "My WE",
-                description = Strings.proj7Desc(),
-                url = MY_WE_URL,
-                platform = ProjectPlatform.PLAY_STORE,
-                technologies = listOf("Java", "RxJava", "XML")
+                name = "Interactive CV",
+                description = Strings.projInteractiveCv(),
+                url = INTERACTIVE_CV_URL,
+                platform = ProjectPlatform.GITHUB,
+                technologies = listOf("KMP", "Compose", "i18n")
             ),
             Project(
                 id = 8,
-                name = "Movie Catalog",
-                description = Strings.proj8Desc(),
-                url = MOVIE_CATALOG_URL,
-                platform = ProjectPlatform.GITHUB,
-                technologies = listOf("Kotlin", "Jetpack Compose", "MVI", "Hilt", "Retrofit")
+                name = "Mystery Shopper",
+                description = Strings.projMysteryShopper(),
+                isInternal = true,
+                platform = ProjectPlatform.INTERNAL,
+                technologies = listOf("Kotlin", "MVI", "Room")
             ),
             Project(
                 id = 9,
-                name = "News Shorts CMP",
-                description = Strings.proj9Desc(),
-                url = NEWS_SHORTS_URL,
-                platform = ProjectPlatform.GITHUB,
-                technologies = listOf("Kotlin", "Compose Multiplatform", "MVI", "Koin", "Ktor")
+                name = "Data Cleansing",
+                description = Strings.projDataCleansing(),
+                isInternal = true,
+                platform = ProjectPlatform.INTERNAL,
+                technologies = listOf("Kotlin", "MVI", "Room")
             )
         )
     }

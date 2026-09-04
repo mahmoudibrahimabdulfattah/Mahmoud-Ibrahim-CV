@@ -28,7 +28,7 @@ object Strings {
     fun marketingHeadline(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أبني تطبيقات موبايل جاهزة للإطلاق."
+            "أبني تطبيقات جوال بأداء يعتمد عليه."
         } else {
             "I build production-ready mobile apps."
         }
@@ -38,9 +38,9 @@ object Strings {
     fun marketingPromise(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أرسل لي تصميمات Figma والـ APIs، وسأسلّمك تطبيق موبايل قابلًا للتوسع باستخدام Kotlin وCompose أو KMP."
+            "أحول تصميمات Figma وواجهات API إلى تطبيقات آمنة وقابلة للتوسع وجاهزة للإطلاق على Android و iOS أو باستخدام Kotlin Multiplatform."
         } else {
-            "Give me your Figma designs and APIs, and I'll deliver a scalable mobile application built with Kotlin and Compose or KMP."
+            "Give me your Figma designs and APIs, and I'll turn them into scalable, secure, production-ready apps for Android, iOS, or Kotlin Multiplatform."
         }
     }
 
@@ -48,7 +48,7 @@ object Strings {
     fun closingContactTitle(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "عندك مشروع موبايل؟"
+            "لديك مشروع تطبيق؟"
         } else {
             "Have a mobile project in mind?"
         }
@@ -58,28 +58,34 @@ object Strings {
     fun closingContactBody(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "أرسل التصميمات والـ APIs أو تفاصيل المنتج، وسأوضح لك أفضل طريقة لبنائه."
+            "أرسل التصميمات أو واجهات API أو تفاصيل المنتج الحالي، وسأوضح لك كيف أبني الحل المناسب."
         } else {
-            "Send the designs, APIs, or product context and I’ll outline the right way to build it."
+            "Send the designs, APIs, or current product context. I'll tell you how I'd approach the build."
         }
     }
 
     @Composable
     fun proofYears(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "سنوات خبرة" else "years"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "خبرة عملية احترافية" else "Professional experience"
+    }
+
+    @Composable
+    fun proofPlatforms(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "تسليم عبر المنصات" else "Cross-platform delivery"
     }
 
     @Composable
     fun proofDownloads(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "تنزيل" else "downloads"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "WeightWatchers على Google Play" else "WeightWatchers on Google Play"
     }
 
     @Composable
-    fun proofRating(): String {
+    fun proofApps(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "تقييم" else "rating"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "وصلت إلى الإنتاج" else "Shipped to production"
     }
 
     @Composable
@@ -108,7 +114,7 @@ object Strings {
     @Composable
     fun profileTitle(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس موبايل أول — Android · iOS · KMP" else "Senior Mobile Engineer — Android · iOS · KMP"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مهندس برمجيات أول لتطبيقات الجوال — Android · iOS · KMP" else "Senior Mobile Engineer — Android · iOS · KMP"
     }
 
     @Composable
@@ -491,92 +497,92 @@ object Strings {
 
     // Projects
     @Composable
-    fun proj1Desc(): String {
+    fun projWeightWatchers(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "التطبيق الرسمي لبرنامج WeightWatchers لإنقاص الوزن، مع أكثر من 10 مليون تحميل وتقييم 4.5 نجمة على Google Play، يساعد الأعضاء على تتبع الطعام والنشاط والماء والوزن."
+            "تطبيق لتتبع الطعام والنشاط والوزن، يستخدمه ملايين الأشخاص حول العالم."
         } else {
-            "Official Android app for the WeightWatchers weight-loss program, with over 10M+ downloads and a 4.5★ rating on Google Play, helping members track food, activity, water, and weight."
+            "Food, activity, and weight tracking used by millions worldwide."
         }
     }
 
     @Composable
-    fun proj2Desc(): String {
+    fun projSgsSuperApp(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطوير تطبيق متكامل معزز بالذكاء الاصطناعي لخدمات الأرض السعودية مع ميزات المحادثة."
+            "خدمة ذاتية للموظفين مدعومة بالذكاء الاصطناعي لصالح Saudi Ground Services."
         } else {
-            "Developed an AI-enhanced super app for Saudi Ground Services with conversational features."
+            "AI-enhanced employee self-service for Saudi Ground Services."
         }
     }
 
     @Composable
-    fun proj3Desc(): String {
+    fun projNewsShorts(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق اندرويد مخصص لبرنامج المتسوق الخفي في المصرية للاتصالات، يمكّن الوكلاء من زيارة فروع WE بشكل سري وإجراء تقييمات منظمة."
+            "تطبيق أخبار مبني باستخدام Kotlin Multiplatform، بتصفح عمودي وبنية offline-first."
         } else {
-            "Custom Android application for Telecom Egypt's Mystery Shopper program, enabling agents to discreetly visit WE branches and conduct structured evaluations."
+            "Kotlin Multiplatform news app with TikTok-style vertical browsing and offline-first architecture."
         }
     }
 
     @Composable
-    fun proj4Desc(): String {
+    fun projSmartMentor(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق اندرويد متخصص لفنيي المصرية للاتصالات الميدانيين لتبسيط مسح وتوثيق خزائن وصناديق الشبكة."
+            "منصة إرشاد تشمل محادثات فورية وجلسات فيديو وحجز المواعيد."
         } else {
-            "Specialized Android application for Telecom Egypt field technicians to streamline scanning and documenting network cabinets and boxes."
+            "Mentorship platform with real-time chat, video sessions, and session booking."
         }
     }
 
     @Composable
-    fun proj5Desc(): String {
+    fun projWeAttend(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق لتبسيط عمليات إدارة الموارد البشرية مع تتبع وإدارة الحضور لموظفي المصرية للاتصالات."
+            "إدارة حضور لأكثر من 2,000 موظف في Telecom Egypt."
         } else {
-            "App to simplify HR management processes, with tracking and managing attendance for Telecom Egypt employees."
+            "Attendance management for 2,000+ Telecom Egypt employees."
         }
     }
 
     @Composable
-    fun proj6Desc(): String {
+    fun projWeHr(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "يتيح لموظفي TE إدارة خدماتهم بسهولة من خلال الوصول إليها من أجهزتهم."
+            "بوابة خدمة ذاتية لطلبات الموارد البشرية وكشوف الرواتب."
         } else {
-            "Allows TE employees to manage their services easily by accessing them from their devices."
+            "Employee self-service portal for HR requests and payslips."
         }
     }
 
     @Composable
-    fun proj7Desc(): String {
+    fun projInteractiveCv(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق إدارة الإنترنت المحمول مع المعاملات عبر الإنترنت - مدفوعات آمنة وعالية النطاق."
+            "سيرة تفاعلية واحدة عبر أربع منصات باستخدام Compose Multiplatform، مع العربية ودعم RTL."
         } else {
-            "Mobile internet management app with online transactions—high-scale, secure payments."
+            "One Compose Multiplatform CV across four platforms, with Arabic and RTL."
         }
     }
 
     @Composable
-    fun proj8Desc(): String {
+    fun projMysteryShopper(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "تطبيق الوسائط الرائجة مع تجربة تصفح حديثة مستوحاة من TikTok."
+            "تقييمات منظمة للفروع مع جمع البيانات ومزامنتها دون اتصال."
         } else {
-            "Trending media app with modern scrolling UX inspired by TikTok."
+            "Structured branch evaluations with offline-first capture and sync."
         }
     }
 
     @Composable
-    fun proj9Desc(): String {
+    fun projDataCleansing(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) {
-            "قارئ أخبار بأسلوب TikTok مبني بـ Compose Multiplatform — كود واحد يعمل على اندرويد و iOS وسطح المكتب والويب، مع تخزين محلي للعمل دون اتصال."
+            "توثيق ميداني لكبائن الشبكات لفنيي Telecom Egypt."
         } else {
-            "TikTok-style news reader built with Compose Multiplatform — one codebase on Android, iOS, Desktop, and Web, with offline-first caching."
+            "Field documentation of network cabinets for Telecom Egypt technicians."
         }
     }
 
