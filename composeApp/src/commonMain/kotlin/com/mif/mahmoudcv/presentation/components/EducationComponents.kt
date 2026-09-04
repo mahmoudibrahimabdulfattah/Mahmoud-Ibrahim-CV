@@ -5,6 +5,8 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,6 +36,7 @@ import com.mif.mahmoudcv.domain.model.Education
 import com.mif.mahmoudcv.theme.AppColors
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 fun EducationCard(
     education: Education,
     modifier: Modifier = Modifier
@@ -69,7 +72,10 @@ fun EducationCard(
             DateBadge(date = "${education.startYear} - ${education.endYear}")
         }
         Spacer(modifier = Modifier.height(20.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
             EducationBadge(
                 icon = Icons.Default.Star,
                 text = Strings.gpaLabel(education.gpa)

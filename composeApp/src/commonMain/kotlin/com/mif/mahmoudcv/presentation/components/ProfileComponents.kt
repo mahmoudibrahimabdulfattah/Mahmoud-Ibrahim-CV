@@ -2,7 +2,6 @@ package com.mif.mahmoudcv.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,10 +17,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Devices
 import androidx.compose.material.icons.outlined.Language
-import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Phone
+import androidx.compose.material.icons.outlined.RocketLaunch
+import androidx.compose.material.icons.outlined.WorkHistory
+import androidx.compose.material.icons.outlined.Download as DownloadOutlined
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -30,15 +31,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -48,6 +49,7 @@ import com.mif.mahmoudcv.domain.model.ProfileInfo
 import com.mif.mahmoudcv.theme.AppColors
 import mahmoudibrahimcv.composeapp.generated.resources.Res
 import mahmoudibrahimcv.composeapp.generated.resources.ic_github
+import mahmoudibrahimcv.composeapp.generated.resources.ic_linkedin
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -65,7 +67,7 @@ fun ProfileHeader(
         ) {
             AsyncImage(
                 model = profileInfo.profileImageUrl,
-                contentDescription = "Mahmoud I. Khalil",
+                contentDescription = "${profileInfo.firstName} ${profileInfo.lastName}",
                 modifier = Modifier
                     .size(72.dp)
                     .clip(CircleShape)
@@ -118,33 +120,14 @@ fun ProfileHeader(
 
 @Composable
 private fun ProofRow(years: Int) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(8.dp)),
-        verticalArrangement = Arrangement.spacedBy(0.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            ProofItem(value = ltr("$years+"), label = Strings.proofYears(), modifier = Modifier.weight(1f))
-            ProofDivider()
-            ProofItem(value = ltr("Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP"), label = Strings.proofPlatforms(), modifier = Modifier.weight(1f))
-        }
+    Column(modifier = Modifier.fillMaxWidth()) {
+        ProofItem(Icons.Outlined.WorkHistory, ltr("$years+"), Strings.proofYears())
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            ProofItem(value = ltr("10M+"), label = Strings.proofDownloads(), modifier = Modifier.weight(1f))
-            ProofDivider()
-            ProofItem(value = ltr("7+"), label = Strings.proofApps(), modifier = Modifier.weight(1f))
-        }
+        ProofItem(Icons.Outlined.Devices, ltr("Android\u00A0·\u00A0iOS\u00A0·\u00A0KMP"), Strings.proofPlatforms())
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+        ProofItem(Icons.Outlined.DownloadOutlined, ltr("10M+"), Strings.proofDownloads())
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+        ProofItem(Icons.Outlined.RocketLaunch, ltr("7+"), Strings.proofApps())
     }
 }
 
@@ -157,75 +140,9 @@ private fun ProofRow(years: Int) {
 private fun ltr(value: String): String = "\u2066$value\u2069"
 
 @Composable
-private fun ProofDivider() {
-    VerticalDivider(
-        modifier = Modifier.height(38.dp),
-        color = MaterialTheme.colorScheme.outlineVariant
-    )
-}
-
-@Composable
-private fun ProofItem(value: String, label: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .padding(horizontal = 6.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = value,
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-            fontWeight = FontWeight.Bold,
-            maxLines = 2,
-            textAlign = TextAlign.Center,
-            lineHeight = 16.sp
-        )
-        Spacer(modifier = Modifier.height(2.dp))
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 2,
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
-@Composable
-fun ContactInfoSection(
-    profileInfo: ProfileInfo,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        ContactInfoItem(icon = Icons.Outlined.LocationOn, text = profileInfo.location)
-        ContactInfoItem(
-            icon = Icons.Outlined.Phone,
-            text = profileInfo.phone,
-            onClick = { com.mif.mahmoudcv.util.openPhoneDialer(profileInfo.phone) }
-        )
-        ContactInfoItem(
-            icon = Icons.Outlined.Email,
-            text = profileInfo.email,
-            onClick = { com.mif.mahmoudcv.util.openEmailClient(profileInfo.email) }
-        )
-    }
-}
-
-@Composable
-private fun ContactInfoItem(
-    icon: ImageVector,
-    text: String,
-    modifier: Modifier = Modifier,
-    onClick: (() -> Unit)? = null
-) {
+private fun ProofItem(icon: ImageVector, value: String, label: String) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .then(if (onClick != null) Modifier.clickable { onClick() } else Modifier)
-            .padding(vertical = 4.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -234,13 +151,21 @@ private fun ContactInfoItem(
             tint = AppColors.signal,
             modifier = Modifier.size(20.dp)
         )
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            color = if (onClick != null) AppColors.signal
-            else MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        Spacer(modifier = Modifier.width(14.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }
 
@@ -354,7 +279,11 @@ fun SocialLinksSection(
                 modifier = Modifier.weight(1f).height(48.dp),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("in", fontWeight = FontWeight.Bold)
+                Icon(
+                    painter = painterResource(Res.drawable.ic_linkedin),
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(Strings.linkedIn(), fontWeight = FontWeight.SemiBold)
             }
@@ -365,6 +294,12 @@ fun SocialLinksSection(
             verticalAlignment = Alignment.CenterVertically
         ) {
             SocialIconButtonWithDrawable(
+                painter = rememberVectorPainter(Icons.Outlined.Phone),
+                label = Strings.callLabel(),
+                onClick = { com.mif.mahmoudcv.util.openPhoneDialer(profileInfo.phone) }
+            )
+            SocialIconButtonWithDrawable(
+                painter = painterResource(Res.drawable.ic_github),
                 label = Strings.github(),
                 onClick = { com.mif.mahmoudcv.util.openUrl(profileInfo.githubUrl) }
             )
@@ -419,7 +354,11 @@ fun ClosingContactSection(
                 modifier = Modifier.weight(1f).height(48.dp),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text("in", fontWeight = FontWeight.Bold)
+                Icon(
+                    painter = painterResource(Res.drawable.ic_linkedin),
+                    contentDescription = null,
+                    modifier = Modifier.size(18.dp)
+                )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(Strings.linkedIn(), fontWeight = FontWeight.SemiBold)
             }
@@ -429,6 +368,7 @@ fun ClosingContactSection(
 
 @Composable
 private fun SocialIconButtonWithDrawable(
+    painter: Painter,
     label: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -442,7 +382,7 @@ private fun SocialIconButtonWithDrawable(
     ) {
         Box(contentAlignment = Alignment.Center) {
             Icon(
-                painter = painterResource(Res.drawable.ic_github),
+                painter = painter,
                 contentDescription = label,
                 tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.size(22.dp)

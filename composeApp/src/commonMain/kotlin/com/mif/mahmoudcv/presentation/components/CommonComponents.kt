@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -64,7 +65,7 @@ fun SectionTitle(
             modifier = Modifier.size(28.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))
-        Column {
+        Column(modifier = Modifier.width(IntrinsicSize.Max)) {
             Text(
                 text = title,
                 style = MaterialTheme.typography.headlineMedium,
@@ -73,7 +74,7 @@ fun SectionTitle(
             Spacer(modifier = Modifier.height(4.dp))
             Box(
                 modifier = Modifier
-                    .width(60.dp)
+                    .fillMaxWidth()
                     .height(4.dp)
                     .clip(RoundedCornerShape(2.dp))
                     .background(AppColors.signal)

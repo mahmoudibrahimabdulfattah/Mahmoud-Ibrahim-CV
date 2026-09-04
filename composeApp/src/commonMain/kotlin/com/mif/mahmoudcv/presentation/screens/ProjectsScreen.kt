@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mif.mahmoudcv.data.CvDataProvider
 import com.mif.mahmoudcv.data.Strings
+import com.mif.mahmoudcv.presentation.components.FeaturedProjectCard
 import com.mif.mahmoudcv.presentation.components.ProjectCard
 import com.mif.mahmoudcv.presentation.components.SectionTitle
 import com.mif.mahmoudcv.theme.AppColors
@@ -40,14 +41,15 @@ fun ProjectsScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 20.dp),
+            .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(top = 24.dp, bottom = 100.dp),
         verticalArrangement = Arrangement.spacedBy(0.dp)
     ) {
         item {
             SectionTitle(
                 title = Strings.sectionProjects(),
-                icon = Icons.Default.Rocket
+                icon = Icons.Default.Rocket,
+                modifier = Modifier.padding(horizontal = 12.dp)
             )
         }
         item {
@@ -56,7 +58,9 @@ fun ProjectsScreen(
                 style = MaterialTheme.typography.titleMedium,
                 color = AppColors.signal,
                 fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(top = 8.dp, bottom = 2.dp)
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .padding(top = 8.dp, bottom = 2.dp)
             )
         }
         itemsIndexed(
@@ -75,7 +79,7 @@ fun ProjectsScreen(
                             animationSpec = tween(500)
                         )
             ) {
-                ProjectCard(project = project)
+                FeaturedProjectCard(project = project)
             }
         }
         itemsIndexed(

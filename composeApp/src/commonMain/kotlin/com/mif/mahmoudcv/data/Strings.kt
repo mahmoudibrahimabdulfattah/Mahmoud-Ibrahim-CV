@@ -794,6 +794,24 @@ object Strings {
     }
 
     @Composable
+    fun destinationPlayStore(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "Google Play" else "Google Play"
+    }
+
+    @Composable
+    fun destinationGithub(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "GitHub" else "GitHub"
+    }
+
+    @Composable
+    fun destinationInternal(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مشروع داخلي" else "Internal"
+    }
+
+    @Composable
     fun internalProject(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "مشروع داخلي" else "Internal Project"
@@ -875,6 +893,12 @@ object Strings {
     fun email(): String {
         val settingsManager = LocalSettingsManager.current
         return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "البريد الإلكتروني" else "Email"
+    }
+
+    @Composable
+    fun callLabel(): String {
+        val settingsManager = LocalSettingsManager.current
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "اتصال" else "Call"
     }
 
     // Skill Levels
