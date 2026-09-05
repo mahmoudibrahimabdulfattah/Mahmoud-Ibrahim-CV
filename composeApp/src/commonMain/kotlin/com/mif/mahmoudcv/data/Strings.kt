@@ -179,7 +179,7 @@ object Strings {
     @Composable
     fun proofDownloads(): String {
         val settingsManager = LocalSettingsManager.current
-        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "WeightWatchers على Google\u00A0Play" else "WeightWatchers on Google Play"
+        return if (settingsManager.currentLanguage == AppLanguage.ARABIC) "WeightWatchers على Store" else "WeightWatchers on Store"
     }
 
     @Composable

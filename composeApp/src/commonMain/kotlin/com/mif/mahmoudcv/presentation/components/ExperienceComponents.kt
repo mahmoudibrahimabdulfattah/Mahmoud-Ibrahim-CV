@@ -1,6 +1,7 @@
 package com.mif.mahmoudcv.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -113,24 +114,18 @@ private fun JobTypeBadge(
         JobType.INTERN -> Strings.jobIntern()
         JobType.FREELANCE -> Strings.jobFreelance()
     }
-    val (backgroundColor, textColor) = when (jobType) {
-        JobType.FULL_TIME -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
-        JobType.PART_TIME -> MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
-        JobType.CONTRACT -> MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
-        JobType.INTERN -> MaterialTheme.colorScheme.surface to MaterialTheme.colorScheme.onSurfaceVariant
-        JobType.FREELANCE -> MaterialTheme.colorScheme.tertiaryContainer to MaterialTheme.colorScheme.onTertiaryContainer
-    }
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(50))
-            .background(backgroundColor)
+            .background(MaterialTheme.colorScheme.surface)
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(50))
             .padding(horizontal = 10.dp, vertical = 4.dp)
     ) {
         Text(
             text = text,
             fontSize = 11.sp,
             fontWeight = FontWeight.SemiBold,
-            color = textColor
+            color = MaterialTheme.colorScheme.onSurface
         )
     }
 }

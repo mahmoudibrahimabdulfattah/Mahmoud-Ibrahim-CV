@@ -206,6 +206,7 @@ private fun ProjectTechnologyChips(technologies: List<String>) {
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(99.dp))
+                    .background(MaterialTheme.colorScheme.surface)
                     .border(
                         width = 1.dp,
                         color = MaterialTheme.colorScheme.outlineVariant,
