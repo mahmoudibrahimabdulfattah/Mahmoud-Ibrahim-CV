@@ -12,7 +12,7 @@ import com.mif.mahmoudcv.data.LocalSettingsManager
 import com.mif.mahmoudcv.data.SettingsManager
 import com.mif.mahmoudcv.presentation.MainScreen
 import com.mif.mahmoudcv.theme.MahmoudIbrahimTheme
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
